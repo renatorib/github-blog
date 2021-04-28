@@ -1,6 +1,6 @@
 {
   "name": "@rena.to/github-blog",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Turn your github issues in CMS for your blog",
   "main": "dist/index.js",
   "repository": "https://github.com/renatorib/github-blog",
