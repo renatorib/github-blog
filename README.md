@@ -77,8 +77,8 @@ Also add an label to your slug like `slug:my-first-post`
 Here comes github-blog. First install
 
 ```sh
-yarn add github-blog
-# npm install github-blog
+yarn add @rena.to/github-blog
+# npm install @rena.to/github-blog
 ```
 
 Now create a new blog instance passing your repo and your github token. [Create your token here](https://github.com/settings/tokens).
