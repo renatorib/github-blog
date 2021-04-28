@@ -10,12 +10,14 @@
 
 ## How it work?
 
-The main idea is simple: each issue is a blog post entity. Taxonomy is managed by labels and have `<key>:<value>` structure. Like `type:post`, `tag:javascript`, etc. Labels can be used to filter posts on querying, but is also available on post too. So you can use to add any kind of flags to your post. The built-in label keys are: `type`, `state`, `tag`, `flag` and `slug`.
+The main idea is simple: each issue is a blog post entity.
 
-Use **type** to differentiate _post_ from _article_, for example.  
-Use **state** to handle _published_ and _draft_.  
-Use **tag** to add tags to your posts, like _typescript_.  
-Use **flag** to add any kind of flag to your post, like _outdated_ to mark post as outdated.
+Taxonomy is managed by **labels** and have `<key>:<value>` structure. Like `type:post`, `tag:javascript`, etc. Labels can be used to filter posts on querying, but is also available on post too. So you can use to add any kind of flags to your post. The built-in label keys are: `type`, `state`, `tag`, `flag` and `slug`.
+
+Use **type** labels to differentiate _post_ from _article_, for example.  
+Use **state** labels to handle _published_ and _draft_.  
+Use **tag** labels to add tags to your posts, like _typescript_.  
+Use **flag** labels to add any kind of flag to your post, like _outdated_ to mark post as outdated.
 
 You can also add any **k:v** labels to your post, like `foo:bar`.
 
@@ -233,16 +235,18 @@ blog.getComments({ query: QueryParams, pager: PagerParams }): Promise<GetComment
 ### Types
 
 #### `ConstructorParams`
+
 ```ts
 type ConstructorParams = {
   token: string;
   repo: string;
   queryDefaults?: Partial<QueryParams>;
   paginationDefaults?: Partial<PagerParams>;
-}
+};
 ```
 
 #### `QueryParams`
+
 ```ts
 type QueryParams = {
   tag?: string | string[];
@@ -255,7 +259,27 @@ type QueryParams = {
   notType?: string | string[];
   author?: string | string[];
   notAuthor?: string | string[];
-  sort?: "interactions" | "reactions" | "author-date" | "created" | "updated" | "interactions-asc" | "reactions-asc" | "author-date-asc" | "created-asc" | "updated-asc" | "interactions-desc" | "reactions-desc" | "author-date-desc" | "created-desc" | "updated-desc" | "reactions-+1" | "reactions--1" | "reactions-smile" | "reactions-tada" | "reactions-heart";
+  sort?:
+    | "interactions"
+    | "reactions"
+    | "author-date"
+    | "created"
+    | "updated"
+    | "interactions-asc"
+    | "reactions-asc"
+    | "author-date-asc"
+    | "created-asc"
+    | "updated-asc"
+    | "interactions-desc"
+    | "reactions-desc"
+    | "author-date-desc"
+    | "created-desc"
+    | "updated-desc"
+    | "reactions-+1"
+    | "reactions--1"
+    | "reactions-smile"
+    | "reactions-tada"
+    | "reactions-heart";
   slug?: string;
   search?: string;
   overrides?: string;
@@ -263,6 +287,7 @@ type QueryParams = {
 ```
 
 #### `PagerParams`
+
 ```ts
 type PagerParams = {
   before?: string;
@@ -275,47 +300,51 @@ type PagerParams = {
 ```
 
 #### `GetPostResult`
+
 ```ts
 type GetPostResult = {
-  post: Post
+  post: Post;
 };
 ```
 
 #### `GetPostsResult`
+
 ```ts
 type GetPostsResult = {
-  totalCount: number,
+  totalCount: number;
   pageInfo: {
-    endCursor: string,
-    startCursor: string,
-    hasNextPage: boolean,
-    hasPreviousPage: boolean,
-  },
+    endCursor: string;
+    startCursor: string;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+  };
   edges: {
-    cursor: string,
-    post: PostReduced
-  }[]
+    cursor: string;
+    post: PostReduced;
+  }[];
 };
 ```
 
 #### `GetCommentsResult`
+
 ```ts
 type GetCommentsResult = {
-  totalCount: number,
+  totalCount: number;
   pageInfo: {
-    endCursor: string,
-    startCursor: string,
-    hasNextPage: boolean,
-    hasPreviousPage: boolean,
-  },
+    endCursor: string;
+    startCursor: string;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+  };
   edges: {
-    cursor: string,
-    comment: Comment
-  }[]
+    cursor: string;
+    comment: Comment;
+  }[];
 };
 ```
 
 #### `Post`
+
 ```ts
 type Post = {
   id: string;
@@ -347,7 +376,7 @@ type Post = {
   };
   totalComments: number;
   totalReactions: number;
-}
+};
 ```
 
 #### `PostReduced`
@@ -355,6 +384,7 @@ type Post = {
 Same as `Post` but without `body`.
 
 #### `Comment`
+
 ```ts
 type Comment = {
   id: string;
