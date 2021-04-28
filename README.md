@@ -8,13 +8,9 @@
   Turn your github issues into a CMS for your blog.
 </p>
 
-<p align="center">
-
 ```sh
 yarn add @rena.to/github-blog
 ```
-
-</p>
 
 ## How it work?
 
@@ -43,7 +39,7 @@ You can also add any **k:v** labels to your post, like `foo:bar`.
   - [Defaults](#defaults)
   - [Comments](#comments)
 - [API Reference](#api-reference)
-  - [Instance & Methods](#instance-&-methods)
+  - [Instance & Methods](#instance--methods)
     - [new GithubBlog](#new-githubblog)
     - [getPost](#getpost)
     - [getPosts](#getposts)
