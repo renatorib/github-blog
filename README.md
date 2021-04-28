@@ -8,6 +8,14 @@
   Turn your github issues into a CMS for your blog.
 </p>
 
+<p align="center">
+
+```sh
+yarn add @rena.to/github-blog
+```
+
+</p>
+
 ## How it work?
 
 The main idea is simple: each issue is a blog post entity.
