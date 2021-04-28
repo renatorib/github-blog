@@ -35,15 +35,21 @@ You can also add any **k:v** labels to your post, like `foo:bar`.
   - [Defaults](#defaults)
   - [Comments](#comments)
 - [API Reference](#api-reference)
-  - [ConstructorParams](#constructorparams)
-  - [QueryParams](#queryparams)
-  - [PagerParams](#pagerparams)
-  - [GetPostResult](#getpostresult)
-  - [GetPostsResult](#getpostsresult)
-  - [GetCommentsResult](#getcommentsresult)
-  - [Post](#post)
-  - [PostReduced](#postreduced)
-  - [Comment](#comment)
+  - [Instance & Methods](#instance-&-methods)
+    - [new GithubBlog](#new-githubblog)
+    - [getPost](#getpost)
+    - [getPosts](#getposts)
+    - [getComments](#getcomments)
+  - [Types](#types)
+    - [ConstructorParams](#constructorparams)
+    - [QueryParams](#queryparams)
+    - [PagerParams](#pagerparams)
+    - [GetPostResult](#getpostresult)
+    - [GetPostsResult](#getpostsresult)
+    - [GetCommentsResult](#getcommentsresult)
+    - [Post](#post)
+    - [PostReduced](#postreduced)
+    - [Comment](#comment)
 
 ## Getting Started
 
@@ -222,15 +228,39 @@ const moreComments = await blog.getComments({
 
 ## API Reference
 
+### Instance & Methods
+
+#### new GithubBlog
+
 ```ts
-const blog = new GithubBlog(ConstructorParams)
+const blog = new GithubBlog(ConstructorParams);
+```
 
+See: [ConstructorParams](#constructorparams);
+
+### getPost
+
+```ts
 blog.getPost({ query: QueryParams }): Promise<GetPostResult>
+```
 
+See: [QueryParams](#queryparams); [GetPostResult](#getpostresult);
+
+### getPosts
+
+```ts
 blog.getPosts({ query: QueryParams, pager: PagerParams }): Promise<GetPostsResult>
+```
 
+See: [QueryParams](#queryparams); [PagerParams](#pagerparams); [GetPostsResult](#getpostsresult);
+
+### getComments
+
+```ts
 blog.getComments({ query: QueryParams, pager: PagerParams }): Promise<GetCommentsResult>
 ```
+
+See: [QueryParams](#queryparams); [PagerParams](#pagerparams); [GetCommentsResult](#getcommentsresult);
 
 ### Types
 
@@ -244,6 +274,8 @@ type ConstructorParams = {
   paginationDefaults?: Partial<PagerParams>;
 };
 ```
+
+See: [QueryParams](#queryparams); [PagerParams](#pagerparams);
 
 #### `QueryParams`
 
@@ -307,6 +339,8 @@ type GetPostResult = {
 };
 ```
 
+See: [Post](#post);
+
 #### `GetPostsResult`
 
 ```ts
@@ -325,6 +359,8 @@ type GetPostsResult = {
 };
 ```
 
+See: [PostReduced](#postreduced);
+
 #### `GetCommentsResult`
 
 ```ts
@@ -342,6 +378,8 @@ type GetCommentsResult = {
   }[];
 };
 ```
+
+See: [Comment](#comment);
 
 #### `Post`
 
@@ -382,6 +420,8 @@ type Post = {
 #### `PostReduced`
 
 Same as `Post` but without `body`.
+
+See: [Post](#post);
 
 #### `Comment`
 
