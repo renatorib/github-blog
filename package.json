@@ -1,6 +1,6 @@
 {
   "name": "@rena.to/github-blog",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Turn your github issues in CMS for your blog",
   "main": "dist/index.js",
   "repository": "https://github.com/renatorib/github-blog",
@@ -16,7 +16,8 @@
     "build": "yarn clean && tsc",
     "pree2e-tests": "yarn build",
     "e2e-tests": "yarn jest --testPathPattern=end-to-end-tests",
-    "debug": "node -r dotenv-flow/config src/tmp/debug.js"
+    "debug": "node -r dotenv-flow/config src/tmp/debug.js",
+    "prepublish": "yarn e2e-tests"
   },
   "lint-staged": {
     "*.{ts,css,md}": "prettier --write"
