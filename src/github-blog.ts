@@ -5,6 +5,7 @@ import { PagerArgs, buildPager } from "./utils/pager";
 import { getPosts } from "./methods/getPosts";
 import { getPost } from "./methods/getPost";
 import { getComments } from "./methods/getComments";
+import { getLabels } from "./methods/getLabels";
 
 import { getSdk } from "./core/sdk";
 
@@ -35,4 +36,5 @@ export class GithubBlog {
   getPosts = getPosts(this);
   getPost = getPost(this);
   getComments = getComments(this);
+  getLabels = getLabels(this);
 }

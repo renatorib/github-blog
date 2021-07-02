@@ -11,9 +11,11 @@
     "clean": "rm -rf ./dist",
     "codegen": "graphql-codegen -r dotenv-flow/config",
     "tsc": "tsc --noEmit",
-    "prebuild": "yarn codegen",
     "dev": "yarn codegen --watch",
+    "prebuild": "yarn codegen",
     "build": "yarn clean && tsc",
+    "pree2e-tests": "yarn build",
+    "e2e-tests": "yarn jest --testPathPattern=end-to-end-tests",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js"
   },
   "lint-staged": {
@@ -29,18 +31,22 @@
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "graphql-tag": "^2.11.0",
-    "gray-matter": "^4.0.2"
+    "gray-matter": "^4.0.2",
+    "jiti": "^1.10.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-graphql-request": "^3.1.0",
     "@graphql-codegen/typescript-operations": "^1.17.15",
+    "@types/jest": "^26.0.23",
     "dotenv-flow": "^3.2.0",
     "eslint": "^7.23.0",
     "husky": "^6.0.0",
+    "jest": "^27.0.6",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.2.3"
   }
 }
