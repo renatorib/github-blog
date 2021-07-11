@@ -15,7 +15,7 @@
     "prebuild": "yarn codegen",
     "build": "yarn clean && tsc",
     "pree2e-tests": "yarn build",
-    "e2e-tests": "yarn jest --testPathPattern=end-to-end-tests",
+    "e2e-tests": "yarn jest --testPathPattern=e2e",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
     "prepublish": "yarn e2e-tests"
   },
@@ -32,8 +32,7 @@
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "graphql-tag": "^2.11.0",
-    "gray-matter": "^4.0.2",
-    "jiti": "^1.10.1"
+    "gray-matter": "^4.0.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.3",
