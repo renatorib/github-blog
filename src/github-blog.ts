@@ -2,12 +2,13 @@ import { GraphQLClient } from "graphql-request";
 import { GithubQueryArgs, githubQueryBuilder } from "./utils/github-query";
 import { PagerArgs, buildPager } from "./utils/pager";
 
+import { getSdk } from "./core/sdk";
+
 import { getPosts } from "./methods/getPosts";
+import { getPinnedPosts } from "./methods/getPinnedPosts";
 import { getPost } from "./methods/getPost";
 import { getComments } from "./methods/getComments";
 import { getLabels } from "./methods/getLabels";
-
-import { getSdk } from "./core/sdk";
 
 export type GithubBlogParams = {
   token: string;
@@ -37,4 +38,5 @@ export class GithubBlog {
   getPost = getPost(this);
   getComments = getComments(this);
   getLabels = getLabels(this);
+  getPinnedPosts = getPinnedPosts(this);
 }

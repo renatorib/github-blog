@@ -21456,6 +21456,44 @@ export type GetLabelsQuery = (
   )> }
 );
 
+export type GetPinnedPostsQueryVariables = Exact<{
+  owner: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type GetPinnedPostsQuery = (
+  { __typename?: 'Query' }
+  & { repository?: Maybe<(
+    { __typename?: 'Repository' }
+    & { pinnedIssues?: Maybe<(
+      { __typename?: 'PinnedIssueConnection' }
+      & { nodes?: Maybe<Array<Maybe<(
+        { __typename?: 'PinnedIssue' }
+        & { pinnedBy: (
+          { __typename?: 'Bot' }
+          & Author_Actor_Bot_Fragment
+        ) | (
+          { __typename?: 'EnterpriseUserAccount' }
+          & Author_Actor_EnterpriseUserAccount_Fragment
+        ) | (
+          { __typename?: 'Mannequin' }
+          & Author_Actor_Mannequin_Fragment
+        ) | (
+          { __typename?: 'Organization' }
+          & Author_Actor_Organization_Fragment
+        ) | (
+          { __typename?: 'User' }
+          & Author_Actor_User_Fragment
+        ), issue: (
+          { __typename?: 'Issue' }
+          & Post_IssueFragment
+        ) }
+      )>>> }
+    )> }
+  )> }
+);
+
 export type GetPostQueryVariables = Exact<{
   query: Scalars['String'];
 }>;
@@ -21649,6 +21687,23 @@ export const GetLabelsDocument = gql`
   }
 }
     ${Label_LabelFragmentDoc}`;
+export const GetPinnedPostsDocument = gql`
+    query GetPinnedPosts($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    pinnedIssues(first: 3) {
+      nodes {
+        pinnedBy {
+          ...Author_Actor
+        }
+        issue {
+          ...Post_Issue
+        }
+      }
+    }
+  }
+}
+    ${Author_ActorFragmentDoc}
+${Post_IssueFragmentDoc}`;
 export const GetPostDocument = gql`
     query GetPost($query: String!) {
   search(first: 1, type: ISSUE, query: $query) {
@@ -21698,6 +21753,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetLabels(variables: GetLabelsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetLabelsQuery> {
       return withWrapper(() => client.request<GetLabelsQuery>(GetLabelsDocument, variables, requestHeaders));
+    },
+    GetPinnedPosts(variables: GetPinnedPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPinnedPostsQuery> {
+      return withWrapper(() => client.request<GetPinnedPostsQuery>(GetPinnedPostsDocument, variables, requestHeaders));
     },
     GetPost(variables: GetPostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostQuery> {
       return withWrapper(() => client.request<GetPostQuery>(GetPostDocument, variables, requestHeaders));

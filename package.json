@@ -14,10 +14,10 @@
     "dev": "yarn codegen --watch",
     "prebuild": "yarn codegen",
     "build": "yarn clean && tsc",
-    "pree2e-tests": "yarn build",
-    "e2e-tests": "yarn jest --testPathPattern=e2e",
+    "pree2e": "yarn build",
+    "e2e": "yarn jest --testPathPattern=e2e",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
-    "prepublish": "yarn e2e-tests"
+    "prepublish": "yarn e2e"
   },
   "lint-staged": {
     "*.{ts,css,md}": "prettier --write"

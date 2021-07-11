@@ -15,5 +15,5 @@
     "baseUrl": "./src"
   },
   "include": ["types/*.d.ts", "__generated__/*.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "src/tmp", "tmp", "dist", "end-to-end-tests"]
+  "exclude": ["node_modules", "src/tmp", "tmp", "dist", "e2e"]
 }
