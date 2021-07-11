@@ -6,6 +6,7 @@ type AuthorType = {
   avatarUrl: string | null;
   name: string;
   login: string | null;
+  twitterUsername: string | null;
 };
 
 type AuthorInput = Author_ActorFragment;
@@ -17,14 +18,21 @@ export const Author = createDataType<AuthorInput, AuthorType>({
         avatarUrl
         name
         login
+        twitterUsername
       }
-      ... on Bot {
+      ... on Organization {
         avatarUrl
+        name
         login
+        twitterUsername
       }
       ... on EnterpriseUserAccount {
         avatarUrl
         name
+        login
+      }
+      ... on Bot {
+        avatarUrl
         login
       }
     }
@@ -34,11 +42,13 @@ export const Author = createDataType<AuthorInput, AuthorType>({
       avatarUrl: "avatarUrl" in actor ? actor.avatarUrl : null,
       login: "login" in actor ? actor.login : null,
       name: "name" in actor && actor.name ? actor.name : "login" in actor ? actor.login : "Unknown",
+      twitterUsername: "twitterUsername" in actor ? actor.twitterUsername ?? null : null,
     };
   },
   fallback: {
     avatarUrl: null,
     login: null,
     name: "Unknown",
+    twitterUsername: null,
   },
 });

@@ -21291,11 +21291,14 @@ type Author_Actor_EnterpriseUserAccount_Fragment = (
 
 type Author_Actor_Mannequin_Fragment = { __typename?: 'Mannequin' };
 
-type Author_Actor_Organization_Fragment = { __typename?: 'Organization' };
+type Author_Actor_Organization_Fragment = (
+  { __typename?: 'Organization' }
+  & Pick<Organization, 'avatarUrl' | 'name' | 'login' | 'twitterUsername'>
+);
 
 type Author_Actor_User_Fragment = (
   { __typename?: 'User' }
-  & Pick<User, 'avatarUrl' | 'name' | 'login'>
+  & Pick<User, 'avatarUrl' | 'name' | 'login' | 'twitterUsername'>
 );
 
 export type Author_ActorFragment = Author_Actor_Bot_Fragment | Author_Actor_EnterpriseUserAccount_Fragment | Author_Actor_Mannequin_Fragment | Author_Actor_Organization_Fragment | Author_Actor_User_Fragment;
@@ -21511,14 +21514,21 @@ export const Author_ActorFragmentDoc = gql`
     avatarUrl
     name
     login
+    twitterUsername
   }
-  ... on Bot {
+  ... on Organization {
     avatarUrl
+    name
     login
+    twitterUsername
   }
   ... on EnterpriseUserAccount {
     avatarUrl
     name
+    login
+  }
+  ... on Bot {
+    avatarUrl
     login
   }
 }
