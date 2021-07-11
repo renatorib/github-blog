@@ -4,7 +4,7 @@ import { Comment_IssueCommentFragment } from "../types";
 import { Author } from "./Author";
 import { Reactions } from "./Reactions";
 
-type CommentType = {
+type Comment = {
   id: string;
   body: string;
   createdAt: string;
@@ -17,7 +17,7 @@ type CommentType = {
 
 type CommentInput = Comment_IssueCommentFragment;
 
-export const Comment = createDataType<CommentInput, CommentType>({
+export const Comment = createDataType<CommentInput, Comment>({
   fragment: gql`
     fragment Comment_IssueComment on IssueComment {
       id

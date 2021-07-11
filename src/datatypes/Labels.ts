@@ -3,7 +3,7 @@ import { isNonNull } from "../utils/func";
 import { createDataType } from "../core/datatype";
 import { Labels_LabelConnectionFragment } from "../types";
 
-type LabelsType = {
+type Labels = {
   state?: string[];
   type?: string[];
   tag?: string[];
@@ -14,7 +14,7 @@ type LabelsType = {
 
 type LabelsInput = Labels_LabelConnectionFragment;
 
-export const Labels = createDataType<LabelsInput, LabelsType>({
+export const Labels = createDataType<LabelsInput, Labels>({
   fragment: gql`
     fragment Labels_LabelConnection on LabelConnection {
       nodes {
@@ -26,9 +26,9 @@ export const Labels = createDataType<LabelsInput, LabelsType>({
     return (nodes ?? [])
       .filter(isNonNull)
       .map((label) => label.name)
-      .reduce<LabelsType>((acc, curr) => {
+      .reduce<Labels>((acc, curr) => {
         const [_prop, value] = curr.split(":");
-        const prop = _prop as keyof LabelsType;
+        const prop = _prop as keyof Labels;
         return {
           ...acc,
           [prop]: acc[prop] ? [...acc[prop]!, value] : [value],

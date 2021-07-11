@@ -1,19 +1,19 @@
 /* Datatypes Types */
 
 import { Author } from "./datatypes/Author";
-export type AuthorType = typeof Author.Type;
+export type Author = typeof Author.Type;
 
 import { Comment } from "./datatypes/Comment";
-export type CommentType = typeof Comment.Type;
+export type Comment = typeof Comment.Type;
 
 import { Label } from "./datatypes/Label";
-export type LabelType = typeof Label.Type;
+export type Label = typeof Label.Type;
 
 import { Labels } from "./datatypes/Labels";
-export type LabelsType = typeof Labels.Type;
+export type Labels = typeof Labels.Type;
 
 import { Post } from "./datatypes/Post";
-export type PostType = typeof Post.Type;
+export type Post = typeof Post.Type;
 
 import { PostReduced } from "./datatypes/PostReduced";
 export type PostReduced = typeof PostReduced.Type;
@@ -21,31 +21,38 @@ export type PostReduced = typeof PostReduced.Type;
 import { Reactions } from "./datatypes/Reactions";
 export type Reactions = typeof Reactions.Type;
 
+/* GithubBlog Types */
+
+import { GithubBlog } from "./github-blog";
+export type GithubBlogParams = ConstructorParameters<typeof GithubBlog>[0];
+export type GithubBlogConstructorParams = GithubBlogParams;
+export type GithubBlogInstance = InstanceType<typeof GithubBlog>;
+
 /* Methods Types */
 
 type Unwrap<T> = T extends Promise<infer U> ? U : never;
 
-import { getComments } from "./methods/getComments";
-export type GetComments = ReturnType<typeof getComments>;
+export type GetComments = GithubBlogInstance["getComments"];
 export type GetCommentsParams = Parameters<GetComments>[0];
 export type GetCommentsResult = Unwrap<ReturnType<GetComments>>;
 
-import { getLabels } from "./methods/getLabels";
-export type GetLabels = ReturnType<typeof getLabels>;
+export type GetLabels = GithubBlogInstance["getLabels"];
 export type GetLabelsParams = Parameters<GetLabels>[0];
 export type GetLabelsResult = Unwrap<ReturnType<GetLabels>>;
 
-import { getPinnedPosts } from "./methods/getPinnedPosts";
-export type GetPinnedPosts = ReturnType<typeof getPinnedPosts>;
+export type GetPinnedPosts = GithubBlogInstance["getPinnedPosts"];
 export type GetPinnedPostsParams = undefined;
 export type GetPinnedPostsResult = Unwrap<ReturnType<GetPinnedPosts>>;
 
-import { getPost } from "./methods/getPost";
-export type GetPost = ReturnType<typeof getPost>;
+export type GetPost = GithubBlogInstance["getPost"];
 export type GetPostParams = Parameters<GetPost>[0];
 export type GetPostResult = Unwrap<ReturnType<GetPost>>;
 
-import { getPosts } from "./methods/getPosts";
-export type GetPosts = ReturnType<typeof getPosts>;
+export type GetPosts = GithubBlogInstance["getPosts"];
 export type GetPostsParams = Parameters<GetPosts>[0];
 export type GetPostsResult = Unwrap<ReturnType<GetPosts>>;
+
+/* Utils & Extras */
+
+export type { GithubQueryParams } from "./utils/github-query";
+export type { PagerParams } from "./utils/pager";

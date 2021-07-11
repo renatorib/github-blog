@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 import type { GithubBlog } from "../github-blog";
 import { Post } from "../datatypes/Post";
-import { GithubQueryArgs } from "../utils/github-query";
+import { GithubQueryParams } from "../utils/github-query";
 
 gql`
   query GetPost($query: String!) {
@@ -16,7 +16,7 @@ gql`
 `;
 
 type GetPostParams = {
-  query?: GithubQueryArgs;
+  query?: GithubQueryParams;
 };
 
 export const getPost = (blog: GithubBlog) => async (params: GetPostParams) => {

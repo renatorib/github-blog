@@ -2,7 +2,7 @@ import { createDataType } from "../core/datatype";
 import { Reactions_ReactionGroupFragment, ReactionContent } from "../types";
 import { gql } from "graphql-request";
 
-export enum ReactionType {
+export enum Reaction {
   ThumbsUp = "THUMBS_UP",
   ThumbsDown = "THUMBS_DOWN",
   Laugh = "LAUGH",
@@ -15,7 +15,7 @@ export enum ReactionType {
   Eyes = "EYES",
 }
 
-type ReactionsType = {
+type Reactions = {
   THUMBS_UP: number;
   THUMBS_DOWN: number;
   LAUGH: number;
@@ -28,7 +28,7 @@ type ReactionsType = {
 
 type ReactionsInput = Reactions_ReactionGroupFragment[];
 
-export const Reactions = createDataType<ReactionsInput, ReactionsType>({
+export const Reactions = createDataType<ReactionsInput, Reactions>({
   fragment: gql`
     fragment Reactions_ReactionGroup on ReactionGroup {
       content
@@ -44,7 +44,7 @@ export const Reactions = createDataType<ReactionsInput, ReactionsType>({
         [curr.content]: curr.users?.totalCount,
       }),
       {}
-    ) as ReactionsType;
+    ) as Reactions;
   },
   fallback: {
     THUMBS_UP: 0,

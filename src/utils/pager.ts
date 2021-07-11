@@ -1,4 +1,4 @@
-export type PagerArgs = {
+export type PagerParams = {
   before?: string;
   after?: string;
   first?: number;
@@ -15,9 +15,9 @@ const btoa =
 const cursor = (n: number) => btoa(`cursor:${n}`);
 
 export const buildPager = (
-  _args?: PagerArgs | undefined,
-  _defaults?: Partial<PagerArgs> | undefined
-): Omit<PagerArgs, "offset"> => {
+  _args?: PagerParams | undefined,
+  _defaults?: Partial<PagerParams> | undefined
+): Omit<PagerParams, "offset"> => {
   const args = {
     ...(_defaults ?? {}),
     ...(_args ?? {}),

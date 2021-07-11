@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 import type { GithubBlog } from "../github-blog";
-import { GithubQueryArgs } from "../utils/github-query";
-import { PagerArgs } from "../utils/pager";
+import { GithubQueryParams } from "../utils/github-query";
+import { PagerParams } from "../utils/pager";
 import { isNonNull } from "../utils/func";
 import { Comment } from "../datatypes/Comment";
 
@@ -32,8 +32,8 @@ gql`
 `;
 
 type GetCommentsParams = {
-  query?: GithubQueryArgs;
-  pager?: Omit<PagerArgs, "limit" | "offset">;
+  query?: GithubQueryParams;
+  pager?: Omit<PagerParams, "limit" | "offset">;
 };
 
 export const getComments = (blog: GithubBlog) => async (params: GetCommentsParams) => {

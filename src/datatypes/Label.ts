@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 import { createDataType } from "../core/datatype";
 import { Label_LabelFragment } from "../types";
 
-type LabelType = {
+type Label = {
   id: string;
   name: string;
   prefix: string;
@@ -11,7 +11,7 @@ type LabelType = {
   quantity: number;
 };
 
-export const Label = createDataType<Label_LabelFragment, LabelType>({
+export const Label = createDataType<Label_LabelFragment, Label>({
   fragment: gql`
     fragment Label_Label on Label {
       id

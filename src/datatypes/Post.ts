@@ -1,13 +1,13 @@
 import matter from "gray-matter";
-import { createDataType } from "../core/datatype";
-import { Post_IssueFragment, ReactionGroup } from "../types";
 import { gql } from "graphql-request";
+import { createDataType } from "../core/datatype";
+import { Post_IssueFragment } from "../types";
 
 import { Reactions } from "./Reactions";
 import { Labels } from "./Labels";
 import { Author } from "./Author";
 
-type PostType = {
+type Post = {
   url: string;
   updatedAt: string;
   createdAt: string;
@@ -23,7 +23,7 @@ type PostType = {
 
 type PostInput = Post_IssueFragment;
 
-export const Post = createDataType<PostInput, PostType>({
+export const Post = createDataType<PostInput, Post>({
   fragment: gql`
     fragment Post_Issue on Issue {
       id

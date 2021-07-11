@@ -1,10 +1,15 @@
 import cn from "classnames";
 
 type SortDescAsc = "interactions" | "reactions" | "author-date" | "created" | "updated";
-type SortReaction = "reactions-+1" | "reactions--1" | "reactions-smile" | "reactions-tada" | "reactions-heart"
-type Sort = SortDescAsc | `${SortDescAsc}-asc` | `${SortDescAsc}-desc` | SortReaction
+type SortReaction =
+  | "reactions-+1"
+  | "reactions--1"
+  | "reactions-smile"
+  | "reactions-tada"
+  | "reactions-heart";
+type Sort = SortDescAsc | `${SortDescAsc}-asc` | `${SortDescAsc}-desc` | SortReaction;
 
-export type GithubQueryArgs = {
+export type GithubQueryParams = {
   tag?: string | string[];
   notTag?: string | string[];
   flag?: string | string[];
@@ -33,8 +38,8 @@ const single = (prefix: string, value: string | undefined) => {
 };
 
 export const githubQueryBuilder = (repo: string) => (
-  _args?: GithubQueryArgs | undefined,
-  _defaults?: Partial<GithubQueryArgs> | undefined
+  _args?: GithubQueryParams | undefined,
+  _defaults?: Partial<GithubQueryParams> | undefined
 ): string => {
   const args = _args ?? {};
   const defaults = _defaults ?? {};

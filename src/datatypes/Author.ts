@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 import { createDataType } from "../core/datatype";
 import { Author_ActorFragment } from "../types";
 
-type AuthorType = {
+type Author = {
   avatarUrl: string | null;
   name: string;
   login: string | null;
@@ -11,7 +11,7 @@ type AuthorType = {
 
 type AuthorInput = Author_ActorFragment;
 
-export const Author = createDataType<AuthorInput, AuthorType>({
+export const Author = createDataType<AuthorInput, Author>({
   fragment: gql`
     fragment Author_Actor on Actor {
       ... on User {

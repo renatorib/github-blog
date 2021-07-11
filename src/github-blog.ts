@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
-import { GithubQueryArgs, githubQueryBuilder } from "./utils/github-query";
-import { PagerArgs, buildPager } from "./utils/pager";
+import { GithubQueryParams, githubQueryBuilder } from "./utils/github-query";
+import { PagerParams, buildPager } from "./utils/pager";
 
 import { getSdk } from "./core/sdk";
 
@@ -13,15 +13,15 @@ import { getLabels } from "./methods/getLabels";
 export type GithubBlogParams = {
   token: string;
   repo: string;
-  queryDefaults?: Partial<GithubQueryArgs>;
-  paginationDefaults?: Partial<PagerArgs>;
+  queryDefaults?: Partial<GithubQueryParams>;
+  paginationDefaults?: Partial<PagerParams>;
 };
 export class GithubBlog {
   client: GraphQLClient;
   sdk: ReturnType<typeof getSdk>;
   repo: string;
-  buildQuery: (args?: GithubQueryArgs) => ReturnType<ReturnType<typeof githubQueryBuilder>>;
-  buildPager: (args?: PagerArgs) => ReturnType<typeof buildPager>;
+  buildQuery: (args?: GithubQueryParams) => ReturnType<ReturnType<typeof githubQueryBuilder>>;
+  buildPager: (args?: PagerParams) => ReturnType<typeof buildPager>;
 
   constructor(params: GithubBlogParams) {
     this.repo = params.repo;

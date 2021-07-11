@@ -1,9 +1,9 @@
 import { gql } from "graphql-request";
 import type { GithubBlog } from "../github-blog";
-import { GithubQueryArgs } from "../utils/github-query";
+import { GithubQueryParams } from "../utils/github-query";
 import { isNonNull } from "../utils/func";
 import { PostReduced } from "../datatypes/PostReduced";
-import { PagerArgs } from "../utils/pager";
+import { PagerParams } from "../utils/pager";
 
 gql`
   query GetPosts($query: String!, $first: Int, $last: Int, $before: String, $after: String) {
@@ -26,8 +26,8 @@ gql`
 `;
 
 type GetPostsParams = {
-  query?: GithubQueryArgs;
-  pager?: PagerArgs;
+  query?: GithubQueryParams;
+  pager?: PagerParams;
 };
 
 export const getPosts = (blog: GithubBlog) => async (params: GetPostsParams) => {

@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 import { isNonNull } from "../utils/func";
 import type { GithubBlog } from "../github-blog";
-import { PagerArgs } from "../utils/pager";
+import { PagerParams } from "../utils/pager";
 import { Label } from "../datatypes/Label";
 
 gql`
@@ -36,7 +36,7 @@ gql`
 
 type GetLabelsParams = {
   query?: string;
-  pager?: PagerArgs;
+  pager?: PagerParams;
 };
 
 export const getLabels = (blog: GithubBlog) => async (params?: GetLabelsParams) => {
