@@ -44,8 +44,13 @@ export const getPosts = (blog: GithubBlog) => async (params: GetPostsParams) => 
   const totalCount = result.search.issueCount ?? 0;
 
   return {
-    pageInfo,
     totalCount,
+    pageInfo: {
+      endCursor: pageInfo.endCursor,
+      startCursor: pageInfo.startCursor,
+      hasNextPage: pageInfo.hasNextPage,
+      hasPreviousPage: pageInfo.hasPreviousPage,
+    },
     edges: edges.filter(isNonNull).map((edge) => {
       return {
         cursor: edge.cursor,

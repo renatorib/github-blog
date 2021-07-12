@@ -21347,6 +21347,11 @@ export type Labels_LabelConnectionFragment = (
   )>>> }
 );
 
+export type PageInfo_PageInfoFragment = (
+  { __typename?: 'PageInfo' }
+  & Pick<PageInfo, 'endCursor' | 'startCursor' | 'hasNextPage' | 'hasPreviousPage'>
+);
+
 export type Post_IssueFragment = (
   { __typename?: 'Issue' }
   & Pick<Issue, 'id' | 'url' | 'updatedAt' | 'createdAt' | 'title' | 'body'>
@@ -21378,6 +21383,11 @@ export type Post_IssueFragment = (
     { __typename?: 'ReactionConnection' }
     & Pick<ReactionConnection, 'totalCount'>
   ) }
+);
+
+export type PostReduced_IssueFragment = (
+  { __typename?: 'Issue' }
+  & Post_IssueFragment
 );
 
 export type Reactions_ReactionGroupFragment = (
@@ -21601,6 +21611,14 @@ export const Label_LabelFragmentDoc = gql`
   }
 }
     `;
+export const PageInfo_PageInfoFragmentDoc = gql`
+    fragment PageInfo_PageInfo on PageInfo {
+  endCursor
+  startCursor
+  hasNextPage
+  hasPreviousPage
+}
+    `;
 export const Labels_LabelConnectionFragmentDoc = gql`
     fragment Labels_LabelConnection on LabelConnection {
   nodes {
@@ -21635,6 +21653,11 @@ export const Post_IssueFragmentDoc = gql`
     ${Author_ActorFragmentDoc}
 ${Reactions_ReactionGroupFragmentDoc}
 ${Labels_LabelConnectionFragmentDoc}`;
+export const PostReduced_IssueFragmentDoc = gql`
+    fragment PostReduced_Issue on Issue {
+  ...Post_Issue
+}
+    ${Post_IssueFragmentDoc}`;
 export const GetCommentsDocument = gql`
     query GetComments($query: String!, $first: Int, $last: Int, $before: String, $after: String) {
   search(first: 1, type: ISSUE, query: $query) {

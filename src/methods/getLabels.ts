@@ -3,6 +3,7 @@ import { isNonNull } from "../utils/func";
 import type { GithubBlog } from "../github-blog";
 import { PagerParams } from "../utils/pager";
 import { Label } from "../datatypes/Label";
+import { PageInfo } from "../datatypes/PageInfo";
 
 gql`
   query GetLabels(
@@ -18,10 +19,7 @@ gql`
       labels(query: $query, first: $first, last: $last, before: $before, after: $after) {
         totalCount
         pageInfo {
-          endCursor
-          startCursor
-          hasNextPage
-          hasPreviousPage
+          ...PageInfo_PageInfo
         }
         edges {
           cursor
@@ -44,13 +42,22 @@ export const getLabels = (blog: GithubBlog) => async (params?: GetLabelsParams) 
   const pager = blog.buildPager(params?.pager);
   const result = await blog.sdk.GetLabels({ owner, name, ...pager, first: pager.first ?? 100 });
 
-  const edges = result.repository?.labels?.edges ?? [];
-  const pageInfo = result.repository?.labels?.pageInfo ?? {};
-  const totalCount = result.repository?.labels?.totalCount ?? 0;
+  const labels = result.repository?.labels;
+  if (!labels) {
+    return {
+      totalCount: 0,
+      pageInfo: {},
+      edges: [],
+    };
+  }
+
+  const totalCount = labels.totalCount ?? 0;
+  const pageInfo = labels.pageInfo ?? {};
+  const edges = labels.edges ?? [];
 
   return {
-    pageInfo,
     totalCount,
+    pageInfo: PageInfo.translate(pageInfo),
     edges: edges.filter(isNonNull).map((edge) => {
       return {
         cursor: edge.cursor,

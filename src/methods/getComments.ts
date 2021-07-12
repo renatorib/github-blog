@@ -4,6 +4,7 @@ import { GithubQueryParams } from "../utils/github-query";
 import { PagerParams } from "../utils/pager";
 import { isNonNull } from "../utils/func";
 import { Comment } from "../datatypes/Comment";
+import { PageInfo } from "../datatypes/PageInfo";
 
 gql`
   query GetComments($query: String!, $first: Int, $last: Int, $before: String, $after: String) {
@@ -13,10 +14,7 @@ gql`
           comments(first: $first, last: $last, before: $before, after: $after) {
             totalCount
             pageInfo {
-              endCursor
-              startCursor
-              hasNextPage
-              hasPreviousPage
+              ...PageInfo_PageInfo
             }
             edges {
               cursor
@@ -58,8 +56,8 @@ export const getComments = (blog: GithubBlog) => async (params: GetCommentsParam
   const totalCount = connection.totalCount ?? 0;
 
   return {
-    pageInfo,
     totalCount,
+    pageInfo: PageInfo.translate(pageInfo),
     edges: edges.filter(isNonNull).map((edge) => {
       return {
         cursor: edge.cursor,

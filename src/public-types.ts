@@ -56,3 +56,5 @@ export type GetPostsResult = Unwrap<ReturnType<GetPosts>>;
 
 export type { GithubQueryParams } from "./utils/github-query";
 export type { PagerParams } from "./utils/pager";
+
+export type Foo = (bar: string) => Promise<number>;
