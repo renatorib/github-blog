@@ -1,312 +1,353 @@
-@rena.to/github-blog / [Exports](modules.md)
+@rena.to/github-blog
 
-# Github Blog
+# @rena.to/github-blog
 
-<p align="center">
-  <img src="cover.png">
-</p>
+## Table of contents
 
-<p align="center">
-  Turn your github issues into a CMS for your blog.
-</p>
+### Classes
 
-```sh
-yarn add @rena.to/github-blog
-```
+- [GithubBlog](classes/GithubBlog.md)
 
-## API Only
+### Type aliases
 
-**This repository is just about the API that wraps github official GraphQL API into some useful methods.**
+- [Author](README.md#author)
+- [Comment](README.md#comment)
+- [GetComments](README.md#getcomments)
+- [GetCommentsParams](README.md#getcommentsparams)
+- [GetCommentsResult](README.md#getcommentsresult)
+- [GetLabels](README.md#getlabels)
+- [GetLabelsParams](README.md#getlabelsparams)
+- [GetLabelsResult](README.md#getlabelsresult)
+- [GetPinnedPosts](README.md#getpinnedposts)
+- [GetPinnedPostsParams](README.md#getpinnedpostsparams)
+- [GetPinnedPostsResult](README.md#getpinnedpostsresult)
+- [GetPost](README.md#getpost)
+- [GetPostParams](README.md#getpostparams)
+- [GetPostResult](README.md#getpostresult)
+- [GetPosts](README.md#getposts)
+- [GetPostsParams](README.md#getpostsparams)
+- [GetPostsResult](README.md#getpostsresult)
+- [GithubBlogParams](README.md#githubblogparams)
+- [GithubQueryParams](README.md#githubqueryparams)
+- [Label](README.md#label)
+- [Labels](README.md#labels)
+- [PagerParams](README.md#pagerparams)
+- [Post](README.md#post)
+- [PostReduced](README.md#postreduced)
+- [Reactions](README.md#reactions)
 
-Note:
+## Type aliases
 
-> If you're looking for something more 'high level', like a full-featured blog application, I'm working on a started templated using Next.js, TypeScript and Tailwindcss. [Follow me on twitter](https://twitter.com/renatorib_) to follow up and receive updates.
+### Author
 
-## Concept
+Ƭ **Author**: typeof `Author.Type`
 
-The main idea is simple: each issue is a blog post entity.
+#### Defined in
 
-Taxonomy is managed by **labels** and have `<key>:<value>` structure. Like `type:post`, `tag:javascript`, etc. Labels can be used to filter posts on querying, but is also available on post too. So you can use to add any kind of flags to your post.
+[public-types.ts:4](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L4)
 
-The built-in label keys are: `type`, `state`, `tag`, `flag` and `slug`.
+---
 
-Use **type** labels to differentiate _post_ from _article_, for example.  
-Use **state** labels to handle _published_ and _draft_.  
-Use **tag** labels to add tags to your posts, like _typescript_.  
-Use **flag** labels to add any kind of flag to your post, like _outdated_ to mark post as outdated.
-Use **slug** label to define an slug to your post. [Read about slug problem](#slug-problem).
+### Comment
 
-You can also add any **k:v** labels to your post, like `foo:bar`.
+Ƭ **Comment**: typeof `Comment.Type`
 
-## Table of Contents
+#### Defined in
 
-- [Getting Started](#getting-started)
-  - [Repository](#repository)
-  - [Issue](#issue)
-  - [Fetch](#fetch)
-- [Guide](#guide)
-  - [Querying](#querying)
-  - [Searching](#searching)
-  - [Sorting](#sorting)
-  - [Pagination](#pagination)
-  - [Defaults](#defaults)
-  - [Comments](#comments)
-- [Problems](#problems)
-  - [Slug Problem](#slug-problem)
-- [API Reference](#api-reference)
+[public-types.ts:7](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L7)
 
-## Getting Started
+---
 
-Let's create your first blog post.  
-You will need: 1) a repository, 2) an issue with some labels
+### GetComments
 
-#### Repository
+Ƭ **GetComments**: `ReturnType`<typeof `getComments`\>
 
-First, you will need to create a repository to publish your posts.
+#### Defined in
 
-It can be private, but I recommend you to create a public since it will allow people comment and react to your posts.  
-Random people will be able to create issues but they can't add labels. So you can control what posts will be shown using some label like `type:post` for example. It will prevent random people to post on your blog. Also, by core github-blog only fetches by opened issues. You can close any random issue opened by others to keep posts organized.
+[methods/getComments.ts:74](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getComments.ts#L74)
 
-![image](https://user-images.githubusercontent.com/3277185/115134566-a8039180-9fe7-11eb-9e74-eb23b488e860.png)
+---
 
-#### Issue
+### GetCommentsParams
 
-Create a issue with your content and add the labels `state:published`, `type:post`.  
-Also add an label to your slug like `slug:my-first-post`.
+Ƭ **GetCommentsParams**: `Object`
 
-> Tip: Your issue content can have frontmatter data
+#### Type declaration
 
-![image](https://user-images.githubusercontent.com/3277185/115800402-ec5cac00-a3b0-11eb-9523-49dbaa341354.png)
+| Name     | Type                                                                     | Description                                                                    |
+| :------- | :----------------------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| `pager?` | `Omit`<[`PagerParams`](README.md#pagerparams), `"limit"` \| `"offset"`\> | Pagination with limit and offset don't work in comments. Use cursor pagination |
+| `query?` | [`GithubQueryParams`](README.md#githubqueryparams)                       | -                                                                              |
 
-#### Fetch
+#### Defined in
 
-Here comes github-blog. First install
+[methods/getComments.ts:33](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getComments.ts#L33)
 
-```sh
-yarn add @rena.to/github-blog
-# npm install @rena.to/github-blog
-```
+---
 
-Now create a new blog instance passing your repo and your github token.  
-[Create your token here ⟶](https://github.com/settings/tokens).
+### GetCommentsResult
 
-```ts
-import { GithubBlog } from "@rena.to/github-blog";
+Ƭ **GetCommentsResult**: `Unwrap`<`ReturnType`<[`GetComments`](README.md#getcomments)\>\>
 
-const blog = new GithubBlog({
-  repo: "<user>/<repo>", // e.g.: "renatorib/posts"
-  token: "<token>",
-});
-```
+#### Defined in
 
-Fetch your post using getPost:
+[methods/getComments.ts:76](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getComments.ts#L76)
 
-```ts
-const post = await blog.getPost({
-  query: { slug: "my-first-post" },
-});
-```
+---
 
-Fetch post comments using getComments:
-
-```ts
-const comments = await blog.getComments({
-  query: { slug: "my-first-post" },
-  pager: { first: 100 },
-});
-```
-
-Fetch all your posts using getPosts:
+### GetLabels
 
-```ts
-const posts = await blog.getPosts({
-  query: { type: "post", state: "published" },
-  pager: { limit: 10, offset: 0 },
-});
-```
-
-That's all.
+Ƭ **GetLabels**: `ReturnType`<typeof `getLabels`\>
 
-## Guides
-
-### Querying
-
-All query works by AND logic. You can't query by OR because of the nature and limitations of github search.  
-But you can exclude results using prefix `not` (`notType`, `notState`, etc.)  
-E.g: If you want to query posts with type _post_ but it can't have a flag _outdated_, you can use:
-
-```ts
-const posts = await blog.getPosts({
-  query: { type: "post", notFlag: "outdated" },
-  pager: { limit: 10, offset: 0 },
-});
-```
+#### Defined in
 
-You can also pass an array to most of query params:
+[methods/getLabels.ts:71](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getLabels.ts#L71)
 
-```ts
-const posts = await blog.getPosts({
-  query: { type: ["post", "article"], tag: ["javascript", "react"] },
-  pager: { limit: 10, offset: 0 },
-});
-```
+---
 
-### Searching
+### GetLabelsParams
 
-You can also search for post that contain terms using `query.search` param:
+Ƭ **GetLabelsParams**: `Object`
 
-```ts
-const posts = await blog.getPosts({
-  query: { type: "post", state: "published", search: "compiler" },
-  pager: { limit: 10, offset: 0 },
-});
-```
+#### Type declaration
 
-### Sorting
+| Name     | Type                                   |
+| :------- | :------------------------------------- |
+| `pager?` | [`PagerParams`](README.md#pagerparams) |
+| `query?` | `string`                               |
 
-You can sort results by `interactions`, `reactions`, `author-date`, `created`, `updated`.  
-All of them are desc by default but you can suffix with `-asc`. See all [in docs](/docs)
+#### Defined in
 
-```ts
-const posts = await blog.getPosts({
-  query: { type: "post", sort: "interactions" },
-  pager: { limit: 10, offset: 0 },
-});
-```
+[methods/getLabels.ts:36](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getLabels.ts#L36)
 
-### Pagination
-
-You can paginate using `pager.limit` and `pager.offset` as you saw before, but you can also paginate using cursors with the pager params `after`, `before`, `first` and `last`.
-
-```ts
-// first 10 posts
-const posts = await blog.getPosts({
-  query: { type: "post" },
-  pager: { first: 10 },
-});
-
-// more 10 posts
-const morePosts = await blog.getPosts({
-  query: { type: "post" },
-  pager: { first: 10, after: posts.pageInfo.endCursor },
-});
-```
-
-> **NOTE:** `limit` and `offset` uses `first` and `after` under the hood.  
-> So if you pass both `limit` and `first` or `offset` and `after`, limit and offset will be ignored.
-
-### Defaults
-
-You can set some defaults for querying right in your blog instance, if you want to avoid some query repetition:
-
-```ts
-const blog = new GithubBlog({
-  repo: "renatorib/posts",
-  token: process.env.GITHUB_TOKEN,
-  queryDefaults: {
-    state: "published",
-    type: "post",
-  },
-});
-
-const posts = await blog.getPosts({
-  pager: { first: 10, offset: 0 },
-});
-```
-
-### Comments
-
-You can fetch all post comments using `getComments` method
-
-```ts
-// first 10 comments
-const comments = await blog.getComments({
-  query: { slug: "my-first-post" },
-  pager: { first: 10 },
-});
-
-// more 10 posts
-const moreComments = await blog.getComments({
-  query: { slug: "my-first-post" },
-  pager: { first: 10, after: comments.pageInfo.endCursor },
-});
-```
-
-> **NOTE:** Comment pagination by _limit_ and _offset_ is still not possible while I figure out on how generate v2 cursors based on offset.  
-> Read more about this issue here, maybe you can help.
-
-## Problems
-
-Github issues and Github API of course isn't designed to this kind of usage. So I ended up bumping into some limitations during the design and construction of the project. Here I list some of them and try to describe the problem and how I tried to get around.
-
-### Slug Problem
-
-One of my biggest disappointments. It's impossible to create a safe and unique slug for your issues.
-
-My first attempt was to use github title to slug, and define the actual post title into issue's frontmatter.
-But it doest work because:
-
-Github only let you query for an exact repo/issue using the number of it, and I don't want to put id/number into my urls.
-
-```graphql
-query {
-  repository(owner: "renatorib", name: "posts") {
-    issue(number: 1) { // get issue at https://github.com/renatorib/posts/issue/1
-      title
-    }
-  }
-}
-```
-
-Github repository issues only allow you to filter using labels, states (closed/open), assignee, dates, etc. Nothing that let me use the title.
-
-```graphql
-query {
-  repository(owner: "renatorib", name: "posts") {
-    issues(...filters) {  // some specific filters, nothing useful
-      title
-    }
-  }
-}
-```
-
-So I was forced to use the [query search](https://docs.github.com/en/github/searching-for-information-on-github/getting-started-with-searching-on-github/understanding-the-search-syntax) that I find more powerful and I could filter by repo/owner
-Now I can find the issue using title this way:
-
-```graphql
-query {
-  search(type: ISSUE, first: 1, query: "repo:renatorib/posts slug-name") {
-    nodes {
-      ... on Issue {
-        title
-      }
-    }
-  }
-}
-```
-
-But it isn't _reliable_. I can't search for an _exact_ title with query search and it could return an issue with title of `slug-name-foo` instead of the `slug-name` depending on the sort rules.
-
-I gave up and ended using labels for that. Now I can query by exact slug:
-
-```graphql
-query {
-  search(type: ISSUE, first: 1, query: "repo:renatorib/posts label:slug:slug-name") {
-    nodes {
-      ... on Issue {
-        title
-      }
-    }
-  }
-}
-```
-
-It works. But the problem is that it isn't the ideal. Each post is a new label, it don't scale well.
-
-### Pagination by limit/offset problem
-
-TODO
-
-## API Reference
-
-See at [/docs](/docs) (auto-generated from typescript types)
+---
+
+### GetLabelsResult
+
+Ƭ **GetLabelsResult**: `Unwrap`<`ReturnType`<[`GetLabels`](README.md#getlabels)\>\>
+
+#### Defined in
+
+[methods/getLabels.ts:73](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getLabels.ts#L73)
+
+---
+
+### GetPinnedPosts
+
+Ƭ **GetPinnedPosts**: `ReturnType`<typeof `getPinnedPosts`\>
+
+#### Defined in
+
+[methods/getPinnedPosts.ts:41](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPinnedPosts.ts#L41)
+
+---
+
+### GetPinnedPostsParams
+
+Ƭ **GetPinnedPostsParams**: `never`
+
+#### Defined in
+
+[methods/getPinnedPosts.ts:25](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPinnedPosts.ts#L25)
+
+---
+
+### GetPinnedPostsResult
+
+Ƭ **GetPinnedPostsResult**: `Unwrap`<`ReturnType`<[`GetPinnedPosts`](README.md#getpinnedposts)\>\>
+
+#### Defined in
+
+[methods/getPinnedPosts.ts:43](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPinnedPosts.ts#L43)
+
+---
+
+### GetPost
+
+Ƭ **GetPost**: `ReturnType`<typeof `getPost`\>
+
+#### Defined in
+
+[methods/getPost.ts:39](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPost.ts#L39)
+
+---
+
+### GetPostParams
+
+Ƭ **GetPostParams**: `Object`
+
+#### Type declaration
+
+| Name     | Type                                               |
+| :------- | :------------------------------------------------- |
+| `query?` | [`GithubQueryParams`](README.md#githubqueryparams) |
+
+#### Defined in
+
+[methods/getPost.ts:19](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPost.ts#L19)
+
+---
+
+### GetPostResult
+
+Ƭ **GetPostResult**: `Unwrap`<`ReturnType`<[`GetPost`](README.md#getpost)\>\>
+
+#### Defined in
+
+[methods/getPost.ts:41](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPost.ts#L41)
+
+---
+
+### GetPosts
+
+Ƭ **GetPosts**: `ReturnType`<typeof `getPosts`\>
+
+#### Defined in
+
+[methods/getPosts.ts:66](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPosts.ts#L66)
+
+---
+
+### GetPostsParams
+
+Ƭ **GetPostsParams**: `Object`
+
+#### Type declaration
+
+| Name     | Type                                               |
+| :------- | :------------------------------------------------- |
+| `pager?` | [`PagerParams`](README.md#pagerparams)             |
+| `query?` | [`GithubQueryParams`](README.md#githubqueryparams) |
+
+#### Defined in
+
+[methods/getPosts.ts:29](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPosts.ts#L29)
+
+---
+
+### GetPostsResult
+
+Ƭ **GetPostsResult**: `Unwrap`<`ReturnType`<[`GetPosts`](README.md#getposts)\>\>
+
+#### Defined in
+
+[methods/getPosts.ts:68](https://github.com/renatorib/github-blog/blob/8393dec/src/methods/getPosts.ts#L68)
+
+---
+
+### GithubBlogParams
+
+Ƭ **GithubBlogParams**: `Object`
+
+#### Type declaration
+
+| Name                  | Type                                                           |
+| :-------------------- | :------------------------------------------------------------- |
+| `paginationDefaults?` | `Partial`<[`PagerParams`](README.md#pagerparams)\>             |
+| `queryDefaults?`      | `Partial`<[`GithubQueryParams`](README.md#githubqueryparams)\> |
+| `repo`                | `string`                                                       |
+| `token`               | `string`                                                       |
+
+#### Defined in
+
+[github-blog.ts:13](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L13)
+
+---
+
+### GithubQueryParams
+
+Ƭ **GithubQueryParams**: `Object`
+
+#### Type declaration
+
+| Name         | Type                   |
+| :----------- | :--------------------- |
+| `author?`    | `string` \| `string`[] |
+| `flag?`      | `string` \| `string`[] |
+| `notAuthor?` | `string` \| `string`[] |
+| `notFlag?`   | `string` \| `string`[] |
+| `notState?`  | `string` \| `string`[] |
+| `notTag?`    | `string` \| `string`[] |
+| `notType?`   | `string` \| `string`[] |
+| `overrides?` | `string`               |
+| `search?`    | `string`               |
+| `slug?`      | `string`               |
+| `sort?`      | `Sort`                 |
+| `state?`     | `string` \| `string`[] |
+| `tag?`       | `string` \| `string`[] |
+| `type?`      | `string` \| `string`[] |
+
+#### Defined in
+
+[utils/github-query.ts:12](https://github.com/renatorib/github-blog/blob/8393dec/src/utils/github-query.ts#L12)
+
+---
+
+### Label
+
+Ƭ **Label**: typeof `Label.Type`
+
+#### Defined in
+
+[public-types.ts:10](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L10)
+
+---
+
+### Labels
+
+Ƭ **Labels**: typeof `Labels.Type`
+
+#### Defined in
+
+[public-types.ts:13](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L13)
+
+---
+
+### PagerParams
+
+Ƭ **PagerParams**: `Object`
+
+#### Type declaration
+
+| Name      | Type     |
+| :-------- | :------- |
+| `after?`  | `string` |
+| `before?` | `string` |
+| `first?`  | `number` |
+| `last?`   | `number` |
+| `limit?`  | `number` |
+| `offset?` | `number` |
+
+#### Defined in
+
+[utils/pager.ts:1](https://github.com/renatorib/github-blog/blob/8393dec/src/utils/pager.ts#L1)
+
+---
+
+### Post
+
+Ƭ **Post**: typeof `Post.Type`
+
+#### Defined in
+
+[public-types.ts:16](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L16)
+
+---
+
+### PostReduced
+
+Ƭ **PostReduced**: typeof `PostReduced.Type`
+
+#### Defined in
+
+[public-types.ts:19](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L19)
+
+---
+
+### Reactions
+
+Ƭ **Reactions**: typeof `Reactions.Type`
+
+#### Defined in
+
+[public-types.ts:22](https://github.com/renatorib/github-blog/blob/8393dec/src/public-types.ts#L22)

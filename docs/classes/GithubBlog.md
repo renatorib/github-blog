@@ -1,4 +1,4 @@
-[@rena.to/github-blog](../README.md) / [Exports](../modules.md) / GithubBlog
+[@rena.to/github-blog](../README.md) / GithubBlog
 
 # Class: GithubBlog
 
@@ -29,43 +29,43 @@
 
 #### Parameters
 
-| Name     | Type                                                 |
-| :------- | :--------------------------------------------------- |
-| `params` | [`GithubBlogParams`](../modules.md#githubblogparams) |
+| Name     | Type                                                |
+| :------- | :-------------------------------------------------- |
+| `params` | [`GithubBlogParams`](../README.md#githubblogparams) |
 
 #### Defined in
 
-[github-blog.ts:26](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L26)
+[github-blog.ts:26](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L26)
 
 ## Properties
 
 ### buildPager
 
-• **buildPager**: (`args?`: [`PagerParams`](../modules.md#pagerparams)) => `Omit`<[`PagerParams`](../modules.md#pagerparams), `"offset"`\>
+• **buildPager**: (`args?`: [`PagerParams`](../README.md#pagerparams)) => `Omit`<[`PagerParams`](../README.md#pagerparams), `"offset"`\>
 
 #### Type declaration
 
-▸ (`args?`): `Omit`<[`PagerParams`](../modules.md#pagerparams), `"offset"`\>
+▸ (`args?`): `Omit`<[`PagerParams`](../README.md#pagerparams), `"offset"`\>
 
 ##### Parameters
 
-| Name    | Type                                       |
-| :------ | :----------------------------------------- |
-| `args?` | [`PagerParams`](../modules.md#pagerparams) |
+| Name    | Type                                      |
+| :------ | :---------------------------------------- |
+| `args?` | [`PagerParams`](../README.md#pagerparams) |
 
 ##### Returns
 
-`Omit`<[`PagerParams`](../modules.md#pagerparams), `"offset"`\>
+`Omit`<[`PagerParams`](../README.md#pagerparams), `"offset"`\>
 
 #### Defined in
 
-[github-blog.ts:24](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L24)
+[github-blog.ts:24](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L24)
 
 ---
 
 ### buildQuery
 
-• **buildQuery**: (`args?`: [`GithubQueryParams`](../modules.md#githubqueryparams)) => `string`
+• **buildQuery**: (`args?`: [`GithubQueryParams`](../README.md#githubqueryparams)) => `string`
 
 #### Type declaration
 
@@ -73,9 +73,9 @@
 
 ##### Parameters
 
-| Name    | Type                                                   |
-| :------ | :----------------------------------------------------- |
-| `args?` | [`GithubQueryParams`](../modules.md#githubqueryparams) |
+| Name    | Type                                                  |
+| :------ | :---------------------------------------------------- |
+| `args?` | [`GithubQueryParams`](../README.md#githubqueryparams) |
 
 ##### Returns
 
@@ -83,7 +83,7 @@
 
 #### Defined in
 
-[github-blog.ts:23](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L23)
+[github-blog.ts:23](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L23)
 
 ---
 
@@ -93,13 +93,13 @@
 
 #### Defined in
 
-[github-blog.ts:20](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L20)
+[github-blog.ts:20](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L20)
 
 ---
 
 ### getComments
 
-• **getComments**: (`params`: [`GetCommentsParams`](../modules.md#getcommentsparams)) => `Promise`<`Object`\>
+• **getComments**: (`params`: [`GetCommentsParams`](../README.md#getcommentsparams)) => `Promise`<`Object`\>
 
 #### Type declaration
 
@@ -107,9 +107,9 @@
 
 ##### Parameters
 
-| Name     | Type                                                   |
-| :------- | :----------------------------------------------------- |
-| `params` | [`GetCommentsParams`](../modules.md#getcommentsparams) |
+| Name     | Type                                                  |
+| :------- | :---------------------------------------------------- |
+| `params` | [`GetCommentsParams`](../README.md#getcommentsparams) |
 
 ##### Returns
 
@@ -117,13 +117,13 @@
 
 #### Defined in
 
-[github-blog.ts:39](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L39)
+[github-blog.ts:39](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L39)
 
 ---
 
 ### getLabels
 
-• **getLabels**: (`params?`: [`GetLabelsParams`](../modules.md#getlabelsparams)) => `Promise`<`Object`\>
+• **getLabels**: (`params?`: [`GetLabelsParams`](../README.md#getlabelsparams)) => `Promise`<`Object`\>
 
 #### Type declaration
 
@@ -131,9 +131,9 @@
 
 ##### Parameters
 
-| Name      | Type                                               |
-| :-------- | :------------------------------------------------- |
-| `params?` | [`GetLabelsParams`](../modules.md#getlabelsparams) |
+| Name      | Type                                              |
+| :-------- | :------------------------------------------------ |
+| `params?` | [`GetLabelsParams`](../README.md#getlabelsparams) |
 
 ##### Returns
 
@@ -141,7 +141,7 @@
 
 #### Defined in
 
-[github-blog.ts:40](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L40)
+[github-blog.ts:40](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L40)
 
 ---
 
@@ -159,13 +159,13 @@
 
 #### Defined in
 
-[github-blog.ts:41](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L41)
+[github-blog.ts:41](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L41)
 
 ---
 
 ### getPost
 
-• **getPost**: (`params`: [`GetPostParams`](../modules.md#getpostparams)) => `Promise`<{ `post`: `null` = null } \| { `post`: `Post` }\>
+• **getPost**: (`params`: [`GetPostParams`](../README.md#getpostparams)) => `Promise`<{ `post`: `null` = null } \| { `post`: `Post` }\>
 
 #### Type declaration
 
@@ -173,9 +173,9 @@
 
 ##### Parameters
 
-| Name     | Type                                           |
-| :------- | :--------------------------------------------- |
-| `params` | [`GetPostParams`](../modules.md#getpostparams) |
+| Name     | Type                                          |
+| :------- | :-------------------------------------------- |
+| `params` | [`GetPostParams`](../README.md#getpostparams) |
 
 ##### Returns
 
@@ -183,13 +183,13 @@
 
 #### Defined in
 
-[github-blog.ts:38](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L38)
+[github-blog.ts:38](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L38)
 
 ---
 
 ### getPosts
 
-• **getPosts**: (`params`: [`GetPostsParams`](../modules.md#getpostsparams)) => `Promise`<`Object`\>
+• **getPosts**: (`params`: [`GetPostsParams`](../README.md#getpostsparams)) => `Promise`<`Object`\>
 
 #### Type declaration
 
@@ -197,9 +197,9 @@
 
 ##### Parameters
 
-| Name     | Type                                             |
-| :------- | :----------------------------------------------- |
-| `params` | [`GetPostsParams`](../modules.md#getpostsparams) |
+| Name     | Type                                            |
+| :------- | :---------------------------------------------- |
+| `params` | [`GetPostsParams`](../README.md#getpostsparams) |
 
 ##### Returns
 
@@ -207,7 +207,7 @@
 
 #### Defined in
 
-[github-blog.ts:37](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L37)
+[github-blog.ts:37](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L37)
 
 ---
 
@@ -217,7 +217,7 @@
 
 #### Defined in
 
-[github-blog.ts:22](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L22)
+[github-blog.ts:22](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L22)
 
 ---
 
@@ -237,4 +237,4 @@
 
 #### Defined in
 
-[github-blog.ts:21](https://github.com/renatorib/github-blog/blob/f53d5a9/src/github-blog.ts#L21)
+[github-blog.ts:21](https://github.com/renatorib/github-blog/blob/8393dec/src/github-blog.ts#L21)

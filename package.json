@@ -16,7 +16,7 @@
     "e2e": "yarn build && yarn jest --testPathPattern=e2e",
     "prepublishOnly": "yarn e2e",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
-    "docs": "typedoc src/public-types.ts --githubPages false"
+    "docs": "typedoc src/public-types.ts --readme none --githubPages none"
   },
   "lint-staged": {
     "*.{ts,css,md}": "prettier --write"
