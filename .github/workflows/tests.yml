@@ -36,4 +36,5 @@ jobs:
       - name: End to end tests
         run: yarn e2e
         env:
-          E2E_TESTS_TOKEN: ${{ secrets.E2E_TESTS_TOKEN }}
+          GITHUB_INTROSPECTION_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_E2E_TESTS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
