@@ -4,6 +4,10 @@
 
 ## Table of contents
 
+### Enumerations
+
+- [Reaction](enums/Reaction.md)
+
 ### Classes
 
 - [GithubBlog](classes/GithubBlog.md)
@@ -44,7 +48,7 @@
 
 #### Defined in
 
-[public-types.ts:4](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L4)
+[public-types.ts:4](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L4)
 
 ---
 
@@ -54,7 +58,7 @@
 
 #### Defined in
 
-[public-types.ts:7](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L7)
+[public-types.ts:7](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L7)
 
 ---
 
@@ -64,7 +68,7 @@
 
 #### Defined in
 
-[methods/getComments.ts:74](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getComments.ts#L74)
+[methods/getComments.ts:74](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getComments.ts#L74)
 
 ---
 
@@ -81,7 +85,7 @@
 
 #### Defined in
 
-[methods/getComments.ts:33](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getComments.ts#L33)
+[methods/getComments.ts:33](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getComments.ts#L33)
 
 ---
 
@@ -91,7 +95,7 @@
 
 #### Defined in
 
-[methods/getComments.ts:76](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getComments.ts#L76)
+[methods/getComments.ts:76](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getComments.ts#L76)
 
 ---
 
@@ -101,7 +105,7 @@
 
 #### Defined in
 
-[methods/getLabels.ts:71](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getLabels.ts#L71)
+[methods/getLabels.ts:71](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getLabels.ts#L71)
 
 ---
 
@@ -118,7 +122,7 @@
 
 #### Defined in
 
-[methods/getLabels.ts:36](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getLabels.ts#L36)
+[methods/getLabels.ts:36](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getLabels.ts#L36)
 
 ---
 
@@ -128,7 +132,7 @@
 
 #### Defined in
 
-[methods/getLabels.ts:73](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getLabels.ts#L73)
+[methods/getLabels.ts:73](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getLabels.ts#L73)
 
 ---
 
@@ -138,7 +142,7 @@
 
 #### Defined in
 
-[methods/getPinnedPosts.ts:41](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPinnedPosts.ts#L41)
+[methods/getPinnedPosts.ts:41](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPinnedPosts.ts#L41)
 
 ---
 
@@ -148,7 +152,7 @@
 
 #### Defined in
 
-[methods/getPinnedPosts.ts:25](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPinnedPosts.ts#L25)
+[methods/getPinnedPosts.ts:25](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPinnedPosts.ts#L25)
 
 ---
 
@@ -158,7 +162,7 @@
 
 #### Defined in
 
-[methods/getPinnedPosts.ts:43](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPinnedPosts.ts#L43)
+[methods/getPinnedPosts.ts:43](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPinnedPosts.ts#L43)
 
 ---
 
@@ -168,7 +172,7 @@
 
 #### Defined in
 
-[methods/getPost.ts:39](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPost.ts#L39)
+[methods/getPost.ts:39](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPost.ts#L39)
 
 ---
 
@@ -184,7 +188,7 @@
 
 #### Defined in
 
-[methods/getPost.ts:19](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPost.ts#L19)
+[methods/getPost.ts:19](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPost.ts#L19)
 
 ---
 
@@ -194,7 +198,7 @@
 
 #### Defined in
 
-[methods/getPost.ts:41](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPost.ts#L41)
+[methods/getPost.ts:41](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPost.ts#L41)
 
 ---
 
@@ -204,7 +208,7 @@
 
 #### Defined in
 
-[methods/getPosts.ts:66](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPosts.ts#L66)
+[methods/getPosts.ts:66](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPosts.ts#L66)
 
 ---
 
@@ -221,7 +225,7 @@
 
 #### Defined in
 
-[methods/getPosts.ts:29](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPosts.ts#L29)
+[methods/getPosts.ts:29](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPosts.ts#L29)
 
 ---
 
@@ -231,7 +235,7 @@
 
 #### Defined in
 
-[methods/getPosts.ts:68](https://github.com/renatorib/github-blog/blob/3e9037b/src/methods/getPosts.ts#L68)
+[methods/getPosts.ts:68](https://github.com/renatorib/github-blog/blob/694d2f5/src/methods/getPosts.ts#L68)
 
 ---
 
@@ -250,7 +254,7 @@
 
 #### Defined in
 
-[github-blog.ts:13](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L13)
+[github-blog.ts:13](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L13)
 
 ---
 
@@ -279,7 +283,7 @@
 
 #### Defined in
 
-[utils/github-query.ts:12](https://github.com/renatorib/github-blog/blob/3e9037b/src/utils/github-query.ts#L12)
+[utils/github-query.ts:12](https://github.com/renatorib/github-blog/blob/694d2f5/src/utils/github-query.ts#L12)
 
 ---
 
@@ -289,7 +293,7 @@
 
 #### Defined in
 
-[public-types.ts:10](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L10)
+[public-types.ts:10](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L10)
 
 ---
 
@@ -299,7 +303,7 @@
 
 #### Defined in
 
-[public-types.ts:13](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L13)
+[public-types.ts:13](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L13)
 
 ---
 
@@ -320,7 +324,7 @@
 
 #### Defined in
 
-[utils/pager.ts:1](https://github.com/renatorib/github-blog/blob/3e9037b/src/utils/pager.ts#L1)
+[utils/pager.ts:1](https://github.com/renatorib/github-blog/blob/694d2f5/src/utils/pager.ts#L1)
 
 ---
 
@@ -330,7 +334,7 @@
 
 #### Defined in
 
-[public-types.ts:16](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L16)
+[public-types.ts:16](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L16)
 
 ---
 
@@ -340,7 +344,7 @@
 
 #### Defined in
 
-[public-types.ts:19](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L19)
+[public-types.ts:19](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L19)
 
 ---
 
@@ -350,4 +354,4 @@
 
 #### Defined in
 
-[public-types.ts:22](https://github.com/renatorib/github-blog/blob/3e9037b/src/public-types.ts#L22)
+[public-types.ts:22](https://github.com/renatorib/github-blog/blob/694d2f5/src/public-types.ts#L22)

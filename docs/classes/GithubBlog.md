@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[github-blog.ts:26](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L26)
+[github-blog.ts:26](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L26)
 
 ## Properties
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[github-blog.ts:24](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L24)
+[github-blog.ts:24](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L24)
 
 ---
 
@@ -83,7 +83,7 @@
 
 #### Defined in
 
-[github-blog.ts:23](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L23)
+[github-blog.ts:23](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L23)
 
 ---
 
@@ -93,7 +93,7 @@
 
 #### Defined in
 
-[github-blog.ts:20](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L20)
+[github-blog.ts:20](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L20)
 
 ---
 
@@ -117,7 +117,7 @@
 
 #### Defined in
 
-[github-blog.ts:39](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L39)
+[github-blog.ts:39](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L39)
 
 ---
 
@@ -141,7 +141,7 @@
 
 #### Defined in
 
-[github-blog.ts:40](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L40)
+[github-blog.ts:40](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L40)
 
 ---
 
@@ -159,7 +159,7 @@
 
 #### Defined in
 
-[github-blog.ts:41](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L41)
+[github-blog.ts:41](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L41)
 
 ---
 
@@ -183,7 +183,7 @@
 
 #### Defined in
 
-[github-blog.ts:38](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L38)
+[github-blog.ts:38](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L38)
 
 ---
 
@@ -207,7 +207,7 @@
 
 #### Defined in
 
-[github-blog.ts:37](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L37)
+[github-blog.ts:37](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L37)
 
 ---
 
@@ -217,7 +217,7 @@
 
 #### Defined in
 
-[github-blog.ts:22](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L22)
+[github-blog.ts:22](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L22)
 
 ---
 
@@ -237,4 +237,4 @@
 
 #### Defined in
 
-[github-blog.ts:21](https://github.com/renatorib/github-blog/blob/3e9037b/src/github-blog.ts#L21)
+[github-blog.ts:21](https://github.com/renatorib/github-blog/blob/694d2f5/src/github-blog.ts#L21)

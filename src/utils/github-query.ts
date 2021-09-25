@@ -1,13 +1,13 @@
 import cn from "classnames";
 
-type SortDescAsc = "interactions" | "reactions" | "author-date" | "created" | "updated";
-type SortReaction =
+export type SortDescAsc = "interactions" | "reactions" | "author-date" | "created" | "updated";
+export type SortReaction =
   | "reactions-+1"
   | "reactions--1"
   | "reactions-smile"
   | "reactions-tada"
   | "reactions-heart";
-type Sort = SortDescAsc | `${SortDescAsc}-asc` | `${SortDescAsc}-desc` | SortReaction;
+export type Sort = SortDescAsc | `${SortDescAsc}-asc` | `${SortDescAsc}-desc` | SortReaction;
 
 export type GithubQueryParams = {
   tag?: string | string[];
