@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { GithubQueryParams } from "../utils/github-query";
 import { PagerParams } from "../utils/pager";
@@ -29,8 +30,11 @@ gql`
   }
 `;
 
-type GetCommentsParams = {
+export type GetCommentsParams = {
   query?: GithubQueryParams;
+  /**
+   * Pagination with limit and offset don't work in comments. Use cursor pagination
+   */
   pager?: Omit<PagerParams, "limit" | "offset">;
 };
 
@@ -66,3 +70,7 @@ export const getComments = (blog: GithubBlog) => async (params: GetCommentsParam
     }),
   };
 };
+
+export type GetComments = ReturnType<typeof getComments>;
+
+export type GetCommentsResult = Unwrap<ReturnType<GetComments>>;

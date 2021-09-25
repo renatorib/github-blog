@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
-import { isNonNull } from "../utils/func";
 import type { GithubBlog } from "../github-blog";
+import type { Unwrap } from "../types";
+import { isNonNull } from "../utils/func";
 import { PagerParams } from "../utils/pager";
 import { Label } from "../datatypes/Label";
 import { PageInfo } from "../datatypes/PageInfo";
@@ -32,7 +33,7 @@ gql`
   }
 `;
 
-type GetLabelsParams = {
+export type GetLabelsParams = {
   query?: string;
   pager?: PagerParams;
 };
@@ -66,3 +67,7 @@ export const getLabels = (blog: GithubBlog) => async (params?: GetLabelsParams) 
     }),
   };
 };
+
+export type GetLabels = ReturnType<typeof getLabels>;
+
+export type GetLabelsResult = Unwrap<ReturnType<GetLabels>>;

@@ -10,14 +10,13 @@
     "prepare": "husky install",
     "clean": "rm -rf ./dist",
     "codegen": "graphql-codegen -r dotenv-flow/config",
-    "tsc": "tsc --noEmit",
+    "type-check": "tsc --noEmit",
     "dev": "yarn codegen --watch",
-    "prebuild": "yarn codegen",
-    "build": "yarn clean && tsc",
-    "pree2e": "yarn build",
-    "e2e": "yarn jest --testPathPattern=e2e",
+    "build": "yarn codegen && yarn clean && tsc",
+    "e2e": "yarn build && yarn jest --testPathPattern=e2e",
+    "prepublishOnly": "yarn e2e",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
-    "prepublish": "yarn e2e"
+    "docs": "typedoc src/public-types.ts"
   },
   "lint-staged": {
     "*.{ts,css,md}": "prettier --write"
@@ -47,7 +46,8 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "ts-jest": "^27.0.3",
-    "ts-morph": "^11.0.3",
+    "typedoc": "^0.22.4",
+    "typedoc-plugin-markdown": "^3.11.2",
     "typescript": "^4.2.3"
   }
 }
