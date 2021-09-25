@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { Post } from "../datatypes/Post";
 import { GithubQueryParams } from "../utils/github-query";
@@ -15,7 +16,7 @@ gql`
   }
 `;
 
-type GetPostParams = {
+export type GetPostParams = {
   query?: GithubQueryParams;
 };
 
@@ -34,3 +35,7 @@ export const getPost = (blog: GithubBlog) => async (params: GetPostParams) => {
     post: Post.translate(issue),
   };
 };
+
+export type GetPost = ReturnType<typeof getPost>;
+
+export type GetPostResult = Unwrap<ReturnType<GetPost>>;

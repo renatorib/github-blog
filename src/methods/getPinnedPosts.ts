@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { isNonNull } from "../utils/func";
 import { PostReduced } from "../datatypes/PostReduced";
@@ -21,6 +22,8 @@ gql`
   }
 `;
 
+export type GetPinnedPostsParams = never;
+
 export const getPinnedPosts = (blog: GithubBlog) => async () => {
   const [owner, name] = blog.repo.split("/");
 
@@ -34,3 +37,7 @@ export const getPinnedPosts = (blog: GithubBlog) => async () => {
     })),
   };
 };
+
+export type GetPinnedPosts = ReturnType<typeof getPinnedPosts>;
+
+export type GetPinnedPostsResult = Unwrap<ReturnType<GetPinnedPosts>>;

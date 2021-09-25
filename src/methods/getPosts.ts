@@ -1,4 +1,5 @@
 import { gql } from "graphql-request";
+import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { GithubQueryParams } from "../utils/github-query";
 import { isNonNull } from "../utils/func";
@@ -25,7 +26,7 @@ gql`
   }
 `;
 
-type GetPostsParams = {
+export type GetPostsParams = {
   query?: GithubQueryParams;
   pager?: PagerParams;
 };
@@ -44,8 +45,13 @@ export const getPosts = (blog: GithubBlog) => async (params: GetPostsParams) => 
   const totalCount = result.search.issueCount ?? 0;
 
   return {
-    pageInfo,
     totalCount,
+    pageInfo: {
+      endCursor: pageInfo.endCursor,
+      startCursor: pageInfo.startCursor,
+      hasNextPage: pageInfo.hasNextPage,
+      hasPreviousPage: pageInfo.hasPreviousPage,
+    },
     edges: edges.filter(isNonNull).map((edge) => {
       return {
         cursor: edge.cursor,
@@ -56,3 +62,7 @@ export const getPosts = (blog: GithubBlog) => async (params: GetPostsParams) => 
     }),
   };
 };
+
+export type GetPosts = ReturnType<typeof getPosts>;
+
+export type GetPostsResult = Unwrap<ReturnType<GetPosts>>;
