@@ -35,3 +35,5 @@ jobs:
 
       - name: End to end tests
         run: yarn e2e
+        env:
+          E2E_TESTS_TOKEN: ${{ secrets.E2E_TESTS_TOKEN }}

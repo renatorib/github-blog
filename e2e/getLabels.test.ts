@@ -2,7 +2,7 @@ import { GithubBlog } from "../dist/github-blog";
 
 const blog = new GithubBlog({
   repo: "renatorib/github-blog-tests",
-  token: process.env.GITHUB_E2E_TESTS_TOKEN!,
+  token: process.env.E2E_TESTS_TOKEN!,
 });
 
 describe("getLabels", () => {
