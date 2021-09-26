@@ -14,11 +14,11 @@ yarn add @rena.to/github-blog
 
 ## API Only
 
-**This repository is just about the API that wraps github official GraphQL API into some useful methods.**
+**This repository is just about the API.**
 
 Note:
 
-> If you're looking for something more 'high level', like a full-featured blog application, I'm working on a started templated using Next.js, TypeScript and Tailwindcss. [Follow me on twitter](https://twitter.com/renatorib_) to follow up and receive updates.
+> If you're looking for something more 'high level', like a full-featured blog application, I'm working on a starter template using Next.js, TypeScript and Tailwindcss. [Follow me on twitter](https://twitter.com/renatorib_) to follow up and receive updates.
 
 ## Concept
 
@@ -28,11 +28,11 @@ Taxonomy is managed by **labels** and have `<key>:<value>` structure. Like `type
 
 The built-in label keys are: `type`, `state`, `tag`, `flag` and `slug`.
 
-Use **type** labels to differentiate _post_ from _article_, for example.  
-Use **state** labels to handle _published_ and _draft_.  
-Use **tag** labels to add tags to your posts, like _typescript_.  
-Use **flag** labels to add any kind of flag to your post, like _outdated_ to mark post as outdated.
-Use **slug** label to define an slug to your post. [Read about slug problem](#slug-problem).
+- Use **type** labels to differentiate _post_ from _article_, for example.
+- Use **state** labels to handle _published_ and _draft_.
+- Use **tag** labels to add tags to your posts, like _typescript_.
+- Use **flag** labels to add any kind of flag to your post, like _outdated_ to mark post as outdated.
+- Use **slug** label to define an slug to your post. [Read about slug problem](#slug-problem).
 
 You can also add any **k:v** labels to your post, like `foo:bar`.
 
@@ -239,10 +239,10 @@ Github issues and Github API of course isn't designed to this kind of usage. So 
 
 ### Slug Problem
 
-One of my biggest disappointments. It's impossible to create a safe and unique slug for your issues.
+One of my biggest disappointments. It's impossible to create a safe and unique slug for your posts.
 
-My first attempt was to use github title to slug, and define the actual post title into issue's frontmatter.
-But it doest work because:
+My first attempt was to use issue title to slug, and define the actual post title into issue's frontmatter.  
+But it does not worked because:
 
 Github only let you query for an exact repo/issue using the number of it, and I don't want to put id/number into my urls.
 
@@ -268,7 +268,7 @@ query {
 }
 ```
 
-So I was forced to use the [query search](https://docs.github.com/en/github/searching-for-information-on-github/getting-started-with-searching-on-github/understanding-the-search-syntax) that I find more powerful and I could filter by repo/owner
+So I was forced to use the [query search](https://docs.github.com/en/github/searching-for-information-on-github/getting-started-with-searching-on-github/understanding-the-search-syntax) that I find more powerful and I could filter by `repo:owner/name`
 Now I can find the issue using title this way:
 
 ```graphql
