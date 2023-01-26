@@ -13,6 +13,7 @@ import { getLabels } from "./methods/getLabels";
 export type GithubBlogParams = {
   token: string;
   repo: string;
+  fetch?: typeof fetch;
   queryDefaults?: Partial<GithubQueryParams>;
   paginationDefaults?: Partial<PagerParams>;
 };
@@ -27,6 +28,7 @@ export class GithubBlog {
     this.repo = params.repo;
     this.client = new GraphQLClient("https://api.github.com/graphql", {
       headers: { Authorization: `Bearer ${params.token}` },
+      fetch: params.fetch ?? undefined,
     });
     this.sdk = getSdk(this.client);
     const buildQuery = githubQueryBuilder(this.repo);
