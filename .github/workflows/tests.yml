@@ -37,4 +37,6 @@ jobs:
         run: yarn e2e
         env:
           GITHUB_INTROSPECTION_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_E2E_TESTS_REPO: "renatorib/github-blog-tests"
+          GITHUB_E2E_TESTS_AUTHOR: "renatorib"
           GITHUB_E2E_TESTS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
