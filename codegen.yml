@@ -5,6 +5,10 @@ schema:
       Authorization: Bearer ${GITHUB_INTROSPECTION_TOKEN}
 generates:
   ./src/__generated__/index.ts:
+    config:
+      preResolveTypes: true
+      onlyOperationTypes: true
+      enumsAsTypes: true
     plugins:
       - typescript
       - typescript-operations
