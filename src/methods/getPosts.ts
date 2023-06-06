@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { GithubQueryParams } from "../utils/github-query";

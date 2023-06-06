@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 
 type Or<Type, Or> = Type | Or;
 type Maybe<Type> = Or<Type, null | undefined>;

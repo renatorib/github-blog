@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 import type { GithubBlog } from "../github-blog";
 import type { Unwrap } from "../types";
 import { isNonNull } from "../utils/func";

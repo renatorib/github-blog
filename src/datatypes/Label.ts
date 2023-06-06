@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 import { createDataType } from "../core/datatype";
 import { Label_LabelFragment } from "../types";
 

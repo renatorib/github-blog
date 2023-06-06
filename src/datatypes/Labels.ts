@@ -1,4 +1,4 @@
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 import { isNonNull } from "../utils/func";
 import { createDataType } from "../core/datatype";
 import { Labels_LabelConnectionFragment } from "../types";
