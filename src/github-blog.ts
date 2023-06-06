@@ -1,8 +1,8 @@
-import { GraphQLClient } from "graphql-request";
+import { fetch } from "undici";
 import { GithubQueryParams, githubQueryBuilder } from "./utils/github-query";
 import { PagerParams, buildPager } from "./utils/pager";
 
-import { getSdk } from "./core/sdk";
+import { getSdk, Requester } from "./core/sdk";
 
 import { getPosts } from "./methods/getPosts";
 import { getPinnedPosts } from "./methods/getPinnedPosts";
@@ -13,12 +13,10 @@ import { getLabels } from "./methods/getLabels";
 export type GithubBlogParams = {
   token: string;
   repo: string;
-  fetch?: typeof fetch;
   queryDefaults?: Partial<GithubQueryParams>;
   paginationDefaults?: Partial<PagerParams>;
 };
 export class GithubBlog {
-  client: GraphQLClient;
   sdk: ReturnType<typeof getSdk>;
   repo: string;
   buildQuery: (args?: GithubQueryParams) => ReturnType<ReturnType<typeof githubQueryBuilder>>;
@@ -26,11 +24,27 @@ export class GithubBlog {
 
   constructor(params: GithubBlogParams) {
     this.repo = params.repo;
-    this.client = new GraphQLClient("https://api.github.com/graphql", {
-      headers: { Authorization: `Bearer ${params.token}` },
-      fetch: params.fetch ?? undefined,
-    });
-    this.sdk = getSdk(this.client);
+    const request: Requester<void, void> = async (query: string, variables: unknown) => {
+      const body = JSON.stringify({
+        query,
+        variables,
+      });
+      const response = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${params.token}`,
+        },
+        body,
+      });
+      const result = (await response.json()) as { data: any; errors: any };
+      if (result.data) {
+        return result.data;
+      }
+      const status = `${response.status} ${response.statusText}`;
+      throw Error(`${status}\n${body}\n${JSON.stringify(result)}`);
+    };
+    this.sdk = getSdk(request);
     const buildQuery = githubQueryBuilder(this.repo);
     this.buildQuery = (args) => buildQuery(args, params.queryDefaults);
     this.buildPager = (args) => buildPager(args, params.paginationDefaults);
