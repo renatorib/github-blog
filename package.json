@@ -12,8 +12,8 @@
     "type-check": "tsc --noEmit",
     "dev": "yarn codegen --watch",
     "build": "rm -rf ./dist && yarn tsc --project tsconfig.build.json",
-    "e2e": "yarn codegen && yarn jest --testPathPattern=e2e",
-    "prepublishOnly": "yarn e2e",
+    "test": "yarn codegen && yarn jest",
+    "prepublishOnly": "yarn test",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
     "docs": "typedoc src --readme none --githubPages false",
     "prepare": "simple-git-hooks"
@@ -24,6 +24,16 @@
   "nano-staged": {
     "*.{ts,css,md}": "prettier --write"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "setupFiles": [
+      "dotenv-flow/config"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ]
+  },
   "files": [
     "package.json",
     "README.md",
@@ -32,8 +42,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "code-tag": "^1.1.0",
-    "gray-matter": "^4.0.2",
-    "undici": "^5.22.1"
+    "undici": "^5.22.1",
+    "yaml": "^2.3.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^4.0.1",
