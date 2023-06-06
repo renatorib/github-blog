@@ -1,4 +1,4 @@
-import { GithubBlog } from "../dist/github-blog";
+import { GithubBlog } from "../src/github-blog";
 
 const blog = new GithubBlog({
   repo: "renatorib/github-blog-tests",

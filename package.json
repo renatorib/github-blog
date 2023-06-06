@@ -8,12 +8,11 @@
   "author": "Renato Ribeiro <hi@rena.to>",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf ./dist",
     "codegen": "graphql-codegen -r dotenv-flow/config",
     "type-check": "tsc --noEmit",
     "dev": "yarn codegen --watch",
-    "build": "yarn codegen && yarn clean && tsc",
-    "e2e": "yarn build && yarn jest --testPathPattern=e2e",
+    "build": "rm -rf ./dist && yarn tsc --project tsconfig.build.json",
+    "e2e": "yarn codegen && yarn jest --testPathPattern=e2e",
     "prepublishOnly": "yarn e2e",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
     "docs": "typedoc src --readme none --githubPages false",
@@ -52,6 +51,6 @@
     "ts-jest": "^29.1.0",
     "typedoc": "^0.22.4",
     "typedoc-plugin-markdown": "^3.11.2",
-    "typescript": "^4.2.3"
+    "typescript": "^5.1.3"
   }
 }
