@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src"
+  },
+  // unsupported by cli so need to use separate config
+  "include": ["./src"]
+}
