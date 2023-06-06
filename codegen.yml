@@ -10,6 +10,8 @@ generates:
       preResolveTypes: true
       onlyOperationTypes: true
       enumsAsTypes: true
+      documentMode: "string"
+      dedupeFragments: true
     plugins:
       - typescript
       - typescript-operations

@@ -1,6 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
 import { GraphQLClientRequestHeaders } from 'graphql-request/build/cjs/types';
-import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -6492,7 +6491,7 @@ export type GetPostsQueryVariables = Exact<{
 
 export type GetPostsQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', issueCount: number, pageInfo: { __typename?: 'PageInfo', endCursor?: string | null, startCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean }, edges?: Array<{ __typename?: 'SearchResultItemEdge', cursor: string, node?: { __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue', id: string, url: any, updatedAt: any, createdAt: any, title: string, body: string, author?: { __typename?: 'Bot', avatarUrl: any, login: string } | { __typename?: 'EnterpriseUserAccount', avatarUrl: any, name?: string | null, login: string } | { __typename?: 'Mannequin' } | { __typename?: 'Organization', avatarUrl: any, name?: string | null, login: string, twitterUsername?: string | null } | { __typename?: 'User', avatarUrl: any, name?: string | null, login: string, twitterUsername?: string | null } | null, reactionGroups?: Array<{ __typename?: 'ReactionGroup', content: ReactionContent, users: { __typename?: 'ReactingUserConnection', totalCount: number } }> | null, labels?: { __typename?: 'LabelConnection', nodes?: Array<{ __typename?: 'Label', name: string } | null> | null } | null, comments: { __typename?: 'IssueCommentConnection', totalCount: number }, reactions: { __typename?: 'ReactionConnection', totalCount: number } } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository' } | { __typename?: 'User' } | null } | null> | null } };
 
-export const Reactions_ReactionGroupFragmentDoc = gql`
+export const Reactions_ReactionGroupFragmentDoc = `
     fragment Reactions_ReactionGroup on ReactionGroup {
   content
   users {
@@ -6500,7 +6499,7 @@ export const Reactions_ReactionGroupFragmentDoc = gql`
   }
 }
     `;
-export const Author_ActorFragmentDoc = gql`
+export const Author_ActorFragmentDoc = `
     fragment Author_Actor on Actor {
   ... on User {
     avatarUrl
@@ -6525,7 +6524,7 @@ export const Author_ActorFragmentDoc = gql`
   }
 }
     `;
-export const Comment_IssueCommentFragmentDoc = gql`
+export const Comment_IssueCommentFragmentDoc = `
     fragment Comment_IssueComment on IssueComment {
   id
   body
@@ -6543,9 +6542,8 @@ export const Comment_IssueCommentFragmentDoc = gql`
     ...Author_Actor
   }
 }
-    ${Reactions_ReactionGroupFragmentDoc}
-${Author_ActorFragmentDoc}`;
-export const Label_LabelFragmentDoc = gql`
+    `;
+export const Label_LabelFragmentDoc = `
     fragment Label_Label on Label {
   id
   name
@@ -6555,7 +6553,7 @@ export const Label_LabelFragmentDoc = gql`
   }
 }
     `;
-export const PageInfo_PageInfoFragmentDoc = gql`
+export const PageInfo_PageInfoFragmentDoc = `
     fragment PageInfo_PageInfo on PageInfo {
   endCursor
   startCursor
@@ -6563,14 +6561,14 @@ export const PageInfo_PageInfoFragmentDoc = gql`
   hasPreviousPage
 }
     `;
-export const Labels_LabelConnectionFragmentDoc = gql`
+export const Labels_LabelConnectionFragmentDoc = `
     fragment Labels_LabelConnection on LabelConnection {
   nodes {
     name
   }
 }
     `;
-export const Post_IssueFragmentDoc = gql`
+export const Post_IssueFragmentDoc = `
     fragment Post_Issue on Issue {
   id
   url
@@ -6594,15 +6592,13 @@ export const Post_IssueFragmentDoc = gql`
     totalCount
   }
 }
-    ${Author_ActorFragmentDoc}
-${Reactions_ReactionGroupFragmentDoc}
-${Labels_LabelConnectionFragmentDoc}`;
-export const PostReduced_IssueFragmentDoc = gql`
+    `;
+export const PostReduced_IssueFragmentDoc = `
     fragment PostReduced_Issue on Issue {
   ...Post_Issue
 }
-    ${Post_IssueFragmentDoc}`;
-export const GetCommentsDocument = gql`
+    `;
+export const GetCommentsDocument = `
     query GetComments($query: String!, $first: Int, $last: Int, $before: String, $after: String) {
   search(first: 1, type: ISSUE, query: $query) {
     nodes {
@@ -6624,8 +6620,10 @@ export const GetCommentsDocument = gql`
   }
 }
     ${PageInfo_PageInfoFragmentDoc}
-${Comment_IssueCommentFragmentDoc}`;
-export const GetLabelsDocument = gql`
+${Comment_IssueCommentFragmentDoc}
+${Reactions_ReactionGroupFragmentDoc}
+${Author_ActorFragmentDoc}`;
+export const GetLabelsDocument = `
     query GetLabels($query: String, $name: String!, $owner: String!, $first: Int, $last: Int, $before: String, $after: String) {
   repository(name: $name, owner: $owner) {
     labels(
@@ -6650,7 +6648,7 @@ export const GetLabelsDocument = gql`
 }
     ${PageInfo_PageInfoFragmentDoc}
 ${Label_LabelFragmentDoc}`;
-export const GetPinnedPostsDocument = gql`
+export const GetPinnedPostsDocument = `
     query GetPinnedPosts($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     pinnedIssues(first: 3) {
@@ -6666,8 +6664,10 @@ export const GetPinnedPostsDocument = gql`
   }
 }
     ${Author_ActorFragmentDoc}
-${Post_IssueFragmentDoc}`;
-export const GetPostDocument = gql`
+${Post_IssueFragmentDoc}
+${Reactions_ReactionGroupFragmentDoc}
+${Labels_LabelConnectionFragmentDoc}`;
+export const GetPostDocument = `
     query GetPost($query: String!) {
   search(first: 1, type: ISSUE, query: $query) {
     nodes {
@@ -6677,8 +6677,11 @@ export const GetPostDocument = gql`
     }
   }
 }
-    ${Post_IssueFragmentDoc}`;
-export const GetPostsDocument = gql`
+    ${Post_IssueFragmentDoc}
+${Author_ActorFragmentDoc}
+${Reactions_ReactionGroupFragmentDoc}
+${Labels_LabelConnectionFragmentDoc}`;
+export const GetPostsDocument = `
     query GetPosts($query: String!, $first: Int, $last: Int, $before: String, $after: String) {
   search(
     query: $query
@@ -6703,7 +6706,10 @@ export const GetPostsDocument = gql`
     }
   }
 }
-    ${Post_IssueFragmentDoc}`;
+    ${Post_IssueFragmentDoc}
+${Author_ActorFragmentDoc}
+${Reactions_ReactionGroupFragmentDoc}
+${Labels_LabelConnectionFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 

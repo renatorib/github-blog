@@ -32,7 +32,6 @@
     "code-tag": "^1.1.0",
     "graphql": "^15.5.0",
     "graphql-request": "^6.1.0",
-    "graphql-tag": "^2.11.0",
     "gray-matter": "^4.0.2"
   },
   "devDependencies": {
