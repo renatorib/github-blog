@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import { gql } from "graphql-request";
+import { gql } from "code-tag";
 import { createDataType } from "../core/datatype";
 import { Post_IssueFragment } from "../types";
 

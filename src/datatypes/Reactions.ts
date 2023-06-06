@@ -1,6 +1,6 @@
+import { gql } from "code-tag";
 import { createDataType } from "../core/datatype";
 import { Reactions_ReactionGroupFragment, ReactionContent } from "../types";
-import { gql } from "graphql-request";
 
 export enum Reaction {
   ThumbsUp = "THUMBS_UP",
