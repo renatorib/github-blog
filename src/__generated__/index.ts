@@ -1,5 +1,3 @@
-import { GraphQLClient } from 'graphql-request';
-import { GraphQLClientRequestHeaders } from 'graphql-request/build/cjs/types';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -6710,28 +6708,23 @@ export const GetPostsDocument = `
 ${Author_ActorFragmentDoc}
 ${Reactions_ReactionGroupFragmentDoc}
 ${Labels_LabelConnectionFragmentDoc}`;
-
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
+export type Requester<C = {}, E = unknown> = <R, V>(doc: string, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
+export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
-    GetComments(variables: GetCommentsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetCommentsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCommentsQuery>(GetCommentsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetComments', 'query');
+    GetComments(variables: GetCommentsQueryVariables, options?: C): Promise<GetCommentsQuery> {
+      return requester<GetCommentsQuery, GetCommentsQueryVariables>(GetCommentsDocument, variables, options) as Promise<GetCommentsQuery>;
     },
-    GetLabels(variables: GetLabelsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetLabelsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetLabelsQuery>(GetLabelsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetLabels', 'query');
+    GetLabels(variables: GetLabelsQueryVariables, options?: C): Promise<GetLabelsQuery> {
+      return requester<GetLabelsQuery, GetLabelsQueryVariables>(GetLabelsDocument, variables, options) as Promise<GetLabelsQuery>;
     },
-    GetPinnedPosts(variables: GetPinnedPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetPinnedPostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetPinnedPostsQuery>(GetPinnedPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetPinnedPosts', 'query');
+    GetPinnedPosts(variables: GetPinnedPostsQueryVariables, options?: C): Promise<GetPinnedPostsQuery> {
+      return requester<GetPinnedPostsQuery, GetPinnedPostsQueryVariables>(GetPinnedPostsDocument, variables, options) as Promise<GetPinnedPostsQuery>;
     },
-    GetPost(variables: GetPostQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetPostQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetPostQuery>(GetPostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetPost', 'query');
+    GetPost(variables: GetPostQueryVariables, options?: C): Promise<GetPostQuery> {
+      return requester<GetPostQuery, GetPostQueryVariables>(GetPostDocument, variables, options) as Promise<GetPostQuery>;
     },
-    GetPosts(variables: GetPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetPostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetPostsQuery>(GetPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetPosts', 'query');
+    GetPosts(variables: GetPostsQueryVariables, options?: C): Promise<GetPostsQuery> {
+      return requester<GetPostsQuery, GetPostsQueryVariables>(GetPostsDocument, variables, options) as Promise<GetPostsQuery>;
     }
   };
 }
