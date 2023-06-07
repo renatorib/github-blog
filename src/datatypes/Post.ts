@@ -1,7 +1,7 @@
-import matter from "gray-matter";
 import { gql } from "code-tag";
 import { createDataType } from "../core/datatype";
 import { Post_IssueFragment } from "../types";
+import { frontmatter } from "../utils/frontmatter";
 
 import { Reactions } from "./Reactions";
 import { Labels } from "./Labels";
@@ -50,7 +50,7 @@ export const Post = createDataType<PostInput, Post>({
     }
   `,
   translator: (issue) => {
-    const { data, content } = matter(issue.body);
+    const { data, content } = frontmatter(issue.body);
 
     return {
       id: issue.id,

@@ -30,11 +30,9 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile --prefer-offline
 
-      - name: Type check
-        run: yarn type-check
+      - run: yarn type-check
 
-      - name: End to end tests
-        run: yarn e2e
+      - run: yarn test
         env:
           GITHUB_INTROSPECTION_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_E2E_TESTS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
