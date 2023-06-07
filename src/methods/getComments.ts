@@ -1,5 +1,4 @@
 import { gql } from "code-tag";
-import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { GithubQueryParams } from "../utils/github-query";
 import { PagerParams } from "../utils/pager";
@@ -73,4 +72,4 @@ export const getComments = (blog: GithubBlog) => async (params: GetCommentsParam
 
 export type GetComments = ReturnType<typeof getComments>;
 
-export type GetCommentsResult = Unwrap<ReturnType<GetComments>>;
+export type GetCommentsResult = Awaited<ReturnType<GetComments>>;

@@ -1,5 +1,4 @@
 import { gql } from "code-tag";
-import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { isNonNull } from "../utils/func";
 import { PostReduced } from "../datatypes/PostReduced";
@@ -40,4 +39,4 @@ export const getPinnedPosts = (blog: GithubBlog) => async () => {
 
 export type GetPinnedPosts = ReturnType<typeof getPinnedPosts>;
 
-export type GetPinnedPostsResult = Unwrap<ReturnType<GetPinnedPosts>>;
+export type GetPinnedPostsResult = Awaited<ReturnType<GetPinnedPosts>>;
