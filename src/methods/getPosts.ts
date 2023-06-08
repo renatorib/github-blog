@@ -1,5 +1,4 @@
 import { gql } from "code-tag";
-import type { Unwrap } from "../types";
 import type { GithubBlog } from "../github-blog";
 import { GithubQueryParams } from "../utils/github-query";
 import { isNonNull } from "../utils/func";
@@ -65,4 +64,4 @@ export const getPosts = (blog: GithubBlog) => async (params: GetPostsParams) => 
 
 export type GetPosts = ReturnType<typeof getPosts>;
 
-export type GetPostsResult = Unwrap<ReturnType<GetPosts>>;
+export type GetPostsResult = Awaited<ReturnType<GetPosts>>;
