@@ -9,6 +9,7 @@ describe("getPost", () => {
   test("get post by slug", async () => {
     const result = await blog.getPost({ query: { slug: "first-post" } });
 
+    expect(result.post?.number).toBe(1);
     expect(result.post?.title).toBe("First post");
     expect(result.post?.frontmatter).toStrictEqual({ meta: "data" });
     expect(result.post?.body).toBe("\r\nHi");

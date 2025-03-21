@@ -8,6 +8,8 @@ import { Labels } from "./Labels";
 import { Author } from "./Author";
 
 type Post = {
+  id: string;
+  number: number;
   url: string;
   updatedAt: string;
   createdAt: string;
@@ -27,6 +29,7 @@ export const Post = createDataType<PostInput, Post>({
   fragment: gql`
     fragment Post_Issue on Issue {
       id
+      number
       url
       updatedAt
       createdAt
@@ -54,6 +57,7 @@ export const Post = createDataType<PostInput, Post>({
 
     return {
       id: issue.id,
+      number: issue.number,
       url: issue.url,
       updatedAt: issue.updatedAt,
       createdAt: issue.createdAt,
