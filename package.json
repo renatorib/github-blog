@@ -1,7 +1,6 @@
 {
-  "packageManager": "yarn@1.22.19",
   "name": "@rena.to/github-blog",
-  "version": "0.4.2",
+  "version": "0.6.1",
   "description": "Turn your github issues in CMS for your blog",
   "main": "dist/index.js",
   "repository": "https://github.com/renatorib/github-blog",
@@ -13,7 +12,7 @@
     "dev": "yarn codegen --watch",
     "build": "rm -rf ./dist && yarn tsc --project tsconfig.build.json",
     "test": "yarn codegen && yarn jest",
-    "prepublishOnly": "yarn test",
+    "prepublishOnly": "yarn test && yarn build",
     "debug": "node -r dotenv-flow/config src/tmp/debug.js",
     "docs": "typedoc src --readme none --githubPages false",
     "prepare": "simple-git-hooks"
@@ -62,5 +61,6 @@
     "typedoc": "^0.22.4",
     "typedoc-plugin-markdown": "^3.11.2",
     "typescript": "^5.1.3"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
